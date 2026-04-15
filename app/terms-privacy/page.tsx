@@ -28,12 +28,9 @@ const Nav = () => (
 const Footer = () => (
   <footer className="px-8 py-8 border-t border-stone-200">
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-stone-400">
-      <div className="flex flex-col gap-1">
-        <span>
-          <strong className="text-stone-600">create by™</strong> — Cueni AS,
-          932292793
-        </span>
-        <span>Øvre Slottsgate 3, 0157 Oslo, Norway</span>
+      <div>
+        <strong className="text-stone-600">create by™</strong>
+        <span> — Cueni AS, 932292793</span>
       </div>
       <div className="flex items-center gap-4">
         <Link href="/about" className="hover:text-stone-700 transition-colors">
@@ -52,6 +49,14 @@ const Footer = () => (
           className="hover:text-stone-700 transition-colors"
         >
           LinkedIn
+        </a>
+        <a
+          href="https://twitter.com/lucascueni"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-stone-700 transition-colors"
+        >
+          Twitter
         </a>
         <span>© {new Date().getFullYear()}</span>
       </div>
@@ -166,9 +171,8 @@ export default function TermsPrivacy() {
             Privacy Policy
           </h2>
           <p className="text-stone-500 text-sm mb-8">
-            create by™ is committed to protecting your personal data. This
-            Privacy Policy explains how we collect, use, and protect your
-            information.
+            I am committed to protecting your personal data. This Privacy Policy
+            explains how I collect, use, and protect your information.
           </p>
 
           <div className="space-y-8">
@@ -177,10 +181,10 @@ export default function TermsPrivacy() {
                 1. Information We Collect
               </h3>
               <p className="text-sm text-stone-500 leading-relaxed">
-                We collect personal information you voluntarily provide, such as
-                your name and email address when you contact us. We also collect
+                I collect personal information you voluntarily provide, such as
+                your name and email address when you contact me. I also collect
                 automatically generated information, such as IP addresses and
-                browser type, to improve our website.
+                browser type, to improve this website.
               </p>
             </div>
 
@@ -189,9 +193,9 @@ export default function TermsPrivacy() {
                 2. How We Use Your Information
               </h3>
               <p className="text-sm text-stone-500 leading-relaxed">
-                We use your personal information for the following purposes:
-                responding to your inquiries, providing and improving our
-                services, and complying with legal obligations. We do not sell
+                I use your personal information for the following purposes:
+                responding to your inquiries, providing and improving my
+                services, and complying with legal obligations. I do not sell
                 your personal data to third parties.
               </p>
             </div>
@@ -201,7 +205,7 @@ export default function TermsPrivacy() {
                 3. Cookies
               </h3>
               <p className="text-sm text-stone-500 leading-relaxed">
-                Our website may use cookies to enhance your experience. You can
+                This website may use cookies to enhance your experience. You can
                 manage your cookie preferences through your browser settings.
               </p>
             </div>
@@ -211,10 +215,9 @@ export default function TermsPrivacy() {
                 4. Third-Party Services
               </h3>
               <p className="text-sm text-stone-500 leading-relaxed">
-                We may use third-party services, such as analytics tools, to
-                help us understand how our website is used. These services may
-                collect information in accordance with their own privacy
-                policies.
+                I may use third-party services, such as analytics tools, to help
+                understand how this website is used. These services may collect
+                information in accordance with their own privacy policies.
               </p>
             </div>
 
@@ -224,7 +227,7 @@ export default function TermsPrivacy() {
               </h3>
               <p className="text-sm text-stone-500 leading-relaxed">
                 Under applicable data protection laws, you have the right to:
-                access the personal data we hold about you, request corrections
+                access the personal data I hold about you, request corrections
                 to any inaccurate data, request deletion of your personal data
                 in certain circumstances, and withdraw consent where processing
                 is based on consent.
@@ -236,7 +239,7 @@ export default function TermsPrivacy() {
                 6. Data Security
               </h3>
               <p className="text-sm text-stone-500 leading-relaxed">
-                We take appropriate technical and organisational measures to
+                I take appropriate technical and organisational measures to
                 protect your personal data against unauthorised access, loss, or
                 destruction.
               </p>
@@ -247,7 +250,7 @@ export default function TermsPrivacy() {
                 7. Changes to this Policy
               </h3>
               <p className="text-sm text-stone-500 leading-relaxed">
-                We may update this Privacy Policy from time to time. Any changes
+                I may update this Privacy Policy from time to time. Any changes
                 will be posted on this page with a revised date.
               </p>
             </div>
@@ -255,10 +258,10 @@ export default function TermsPrivacy() {
 
           <div className="mt-12 pt-8 border-t border-stone-200">
             <h3 className="text-sm font-semibold text-stone-700 mb-2">
-              Contact Us
+              Contact
             </h3>
             <p className="text-sm text-stone-500 leading-relaxed">
-              For any questions about these policies, please contact us at{" "}
+              For any questions about these policies, please contact me at{" "}
               <a
                 href="mailto:hello@createby.no"
                 className="text-stone-700 underline underline-offset-4 hover:text-stone-900"
@@ -269,8 +272,6 @@ export default function TermsPrivacy() {
             </p>
             <p className="text-sm text-stone-400 mt-2">
               Cueni AS — Org. 932292793
-              <br />
-              Øvre Slottsgate 3, 0157 Oslo, Norway
             </p>
           </div>
         </section>
