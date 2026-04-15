@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "createby dev",
+      "runtimeExecutable": "/bin/zsh",
+      "runtimeArgs": ["-c", "export PATH=/usr/local/bin:/opt/homebrew/bin:$PATH && npm run dev"],
+      "port": 3000,
+      "autoPort": false
+    }
+  ]
+}
