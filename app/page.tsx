@@ -6,25 +6,67 @@ const services = [
     number: "01",
     title: "Innovation & Product Strategy",
     description:
-      "Develop tailored strategies that turn insights into clear, actionable plans for sustainable growth.",
+      "From fuzzy opportunity to clear roadmap. I combine design thinking with business strategy to define what to build, why, and how to validate it fast.",
   },
   {
     number: "02",
     title: "Service & Business Design",
     description:
-      "Co-create services and business models that align with your goals and deliver seamless customer experiences.",
+      "Research, journey mapping, service blueprinting and business model alignment — done with the people who will use and run the service, not just for them.",
   },
   {
     number: "03",
     title: "User Experience & Interaction Design",
     description:
-      "Design user-focused, research-driven interfaces that enhance usability and meet business objectives.",
+      "Research-led, prototype-driven interface design. I work from first principles to high-fidelity — and I know the difference between what users say and what they do.",
   },
   {
     number: "04",
     title: "Product & Design Leadership",
     description:
-      "Guide teams in creating consistent, high-quality products with efficient processes and clear design systems.",
+      "Embedded leadership for product and design teams. OKRs, design systems, cross-functional ways of working. Built to last, not just to document.",
+  },
+  {
+    number: "05",
+    title: "Organisational Design & Transformation",
+    description:
+      "Helping organisations shift how they work — introducing product thinking, agile methods, and design-led change into functions that have never operated that way. HR, operations, strategy.",
+    wide: true,
+  },
+];
+
+const work = [
+  {
+    client: "Posten Bring",
+    title: "HR Transformation",
+    description:
+      "Applying service design and agile methodology to transform how a major Norwegian organisation manages its people processes. Design as the vehicle for change.",
+    year: "2025",
+    context: "Manyone",
+  },
+  {
+    client: "Domino's Norway",
+    title: "Digital Commerce",
+    description:
+      "Redesigning the ordering experience to reduce friction and increase conversion. From discovery to high-fidelity testing to developer handoff.",
+    year: "2025",
+    context: "Manyone",
+  },
+  {
+    client: "Faerch",
+    title: "Digital Transformation",
+    description:
+      "Unified digital platform for a pan-European packaging leader merging multiple brands. User research, content strategy, Figma to Framer.",
+    year: "2024",
+    context: "create by™",
+  },
+  {
+    client: "Schibsted NextGen Publishing",
+    title: "Team Scaling",
+    description:
+      "Built and led a product and design department from 4 to 50+ people across 5 product teams in under 2 years. Hypothesis-driven development from day one.",
+    year: "2016–2020",
+    context: "Schibsted",
   },
 ];
 
@@ -32,7 +74,7 @@ const faqs = [
   {
     question: "What phases do you usually work in?",
     answer:
-      "I work across the full innovation lifecycle — from early discovery and framing through concept development, prototyping, and into delivery. The engagement can start at any phase, and I adapt to where you are.",
+      "I work across the full innovation lifecycle — from early discovery through concept development, prototyping and into delivery. I also step into mature teams as an embedded lead. The engagement can start anywhere. I adapt to where you are, not the other way around.",
   },
   {
     question: "How do you approach product and service development?",
@@ -62,12 +104,12 @@ const faqs = [
   {
     question: "Do you work embedded in product teams?",
     answer:
-      "Yes — it is how I work best, and it is what I do every day in my role at Manyone. For consulting engagements through create by™, embedded collaboration is always the preference over advisory-only work.",
+      "Yes — it is how I work best, and what I do every day in my role at Manyone. For engagements through create by™, embedded collaboration is always the preference over advisory-only work. I am not a drop-in consultant.",
   },
   {
     question: "Can we collaborate?",
     answer:
-      "Possibly. My consulting capacity through create by™ is limited — I run it alongside a full-time leadership role. That means I take on engagements where I can genuinely contribute, not just fill a slot. If you have a concrete challenge, let's talk.",
+      "Possibly. My capacity through create by™ is limited — I run it alongside a full-time leadership role. I take on engagements where I can genuinely contribute, not just fill a slot. If you have a concrete challenge, get in touch.",
   },
 ];
 
@@ -103,10 +145,10 @@ export default function Home() {
               by design
             </h1>
             <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed">
-              I have spent 20 years designing products, building teams, and
-              turning strategy into something that ships. Currently Product and
-              Innovation Director at Manyone. Through create by™, I take on
-              select engagements and build new digital ventures from scratch.
+              I have spent 20 years turning design into strategy and strategy
+              into something that ships. Currently Product and Innovation
+              Director at Manyone. Through create by™, I take on select
+              engagements and build new digital ventures from scratch.
             </p>
           </div>
         </section>
@@ -122,14 +164,17 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200">
             {services.map((s) => (
-              <div key={s.number} className="bg-[#fafaf9] p-8 md:p-10">
+              <div
+                key={s.number}
+                className={`bg-[#fafaf9] p-8 md:p-10${s.wide ? " md:col-span-2" : ""}`}
+              >
                 <span className="text-xs text-stone-400 mb-4 block">
                   {s.number}
                 </span>
                 <h2 className="text-lg font-medium text-stone-900 mb-3 leading-snug">
                   {s.title}
                 </h2>
-                <p className="text-sm text-stone-500 leading-relaxed">
+                <p className={`text-sm text-stone-500 leading-relaxed${s.wide ? " max-w-2xl" : ""}`}>
                   {s.description}
                 </p>
               </div>
@@ -141,17 +186,57 @@ export default function Home() {
           <div className="border-t border-stone-200" />
         </div>
 
-        {/* Collaborations */}
+        {/* Selected Work */}
         <section className="px-8 py-20">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-4">
-            Professional collaborations over the years…
+          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12">
+            Selected work
           </p>
-          <Link
-            href="/about"
-            className="text-sm text-stone-500 hover:text-stone-900 transition-colors underline underline-offset-4"
-          >
-            Read more about my background
-          </Link>
+          <div className="divide-y divide-stone-200">
+            {work.map((w) => (
+              <div key={w.client} className="py-8 md:py-10">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
+                  <h2 className="text-base font-medium text-stone-900">
+                    {w.client}{" "}
+                    <span className="text-stone-400 font-normal">— {w.title}</span>
+                  </h2>
+                  <span className="text-xs text-stone-400 shrink-0">
+                    {w.year} — {w.context}
+                  </span>
+                </div>
+                <p className="text-sm text-stone-500 leading-relaxed max-w-2xl">
+                  {w.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="px-8">
+          <div className="border-t border-stone-200" />
+        </div>
+
+        {/* Currently */}
+        <section className="px-8 py-20 max-w-3xl">
+          <p className="text-xs uppercase tracking-widest text-stone-400 mb-10">
+            Currently
+          </p>
+          <div className="space-y-6 text-stone-500 text-base leading-relaxed">
+            <p>
+              Product and Innovation Director at{" "}
+              <strong className="text-stone-700">Manyone</strong> — leading
+              product and innovation work embedded in client teams across Norway
+              and Europe.
+            </p>
+            <p>
+              Building new digital ventures as a solo founder — designing,
+              prototyping and shipping with AI-assisted development. One person,
+              moving fast.
+            </p>
+            <p>
+              Select consulting engagements available through{" "}
+              <strong className="text-stone-700">create by™</strong>.
+            </p>
+          </div>
         </section>
 
         <div className="px-8">
