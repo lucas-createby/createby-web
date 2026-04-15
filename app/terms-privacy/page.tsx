@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const Nav = () => (
-  <nav className="px-8 py-6 flex items-center justify-between border-b border-stone-200">
+  <nav className="fixed top-0 inset-x-0 z-50 px-8 py-6 flex items-center justify-between border-b border-stone-200/60 bg-[#fafaf9]/70 backdrop-blur-md">
     <Link href="/" className="text-sm font-medium tracking-tight">
       create by™
     </Link>
@@ -69,7 +69,7 @@ export default function TermsPrivacy() {
     <div className="flex flex-col min-h-screen">
       <Nav />
 
-      <main className="flex-1 px-8 py-20 max-w-3xl">
+      <main className="flex-1 px-8 pt-32 pb-20 max-w-3xl">
         <p className="text-xs uppercase tracking-widest text-stone-400 mb-12">
           Legal
         </p>
