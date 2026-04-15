@@ -59,7 +59,7 @@ const Footer = () => (
         >
           Twitter
         </a>
-        <span>© 2025</span>
+        <span>© {new Date().getFullYear()}</span>
       </div>
     </div>
   </footer>
