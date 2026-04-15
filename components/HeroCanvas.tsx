@@ -195,8 +195,8 @@ export default function HeroCanvas() {
   }, [])
 
   return (
-    <div ref={wrapperRef} className="absolute inset-0 pointer-events-none">
-      <svg ref={svgRef} aria-hidden="true" className="absolute inset-0 w-full h-full" />
+    <div ref={wrapperRef} className="absolute inset-0">
+      <svg ref={svgRef} aria-hidden="true" className="absolute inset-0 w-full h-full pointer-events-none" />
     </div>
   )
 }
