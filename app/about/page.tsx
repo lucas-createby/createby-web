@@ -29,12 +29,9 @@ const Nav = () => (
 const Footer = () => (
   <footer className="px-8 py-8 border-t border-stone-200">
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-stone-400">
-      <div className="flex flex-col gap-1">
-        <span>
-          <strong className="text-stone-600">create by™</strong> — Cueni AS,
-          932292793
-        </span>
-        <span>Øvre Slottsgate 3, 0157 Oslo, Norway</span>
+      <div>
+        <strong className="text-stone-600">create by™</strong>
+        <span> — Cueni AS, 932292793</span>
       </div>
       <div className="flex items-center gap-4">
         <Link href="/about" className="hover:text-stone-700 transition-colors">
@@ -84,45 +81,50 @@ export default function About() {
 
         <div className="space-y-6 text-stone-500 text-base leading-relaxed">
           <p>
-            I am a designer, product and service developer, with a strategic
-            approach and business mindset.
+            I am a designer, product developer and strategist with over 20 years
+            of experience across media, telco, public sector and early-stage
+            products.
           </p>
 
           <p>
-            With over 20 years of experience, I drive innovation through design
-            thinking and thrive best in cross-functional teams. My skills lie in
-            leading and collaborating with teams from diverse backgrounds to
-            deliver successful products and services.
+            Currently I work as Product and Innovation Director at{" "}
+            <strong className="text-stone-700">Manyone</strong>, where I lead
+            product and innovation work embedded in cross-functional teams.
+            Alongside that, I run{" "}
+            <strong className="text-stone-700">create by™</strong> for select
+            consulting engagements where I can add real value.
           </p>
 
           <p>
-            Experience includes innovation leadership roles at{" "}
-            <strong className="text-stone-700">Schibsted</strong>, co-founder
-            and designer at{" "}
-            <strong className="text-stone-700">itch Oslo</strong>, and UX
-            consulting for clients from various sectors and industries.
-            Co-founder of the IxDA Oslo Chapter.
+            I am also a solo builder. I design, prototype and ship digital
+            products myself — using modern AI-assisted development to move fast
+            without a large team behind me. Building new ventures from scratch,
+            one iteration at a time.
           </p>
 
           <p>
-            I am building up <strong className="text-stone-700">create by™</strong>{" "}
-            to use my skills as a designer to solve wicked problems and
-            contribute to building a more sustainable and equitable society.
+            Ten years building from the inside — in-house product and design
+            roles at some of Norway&apos;s largest organisations, including{" "}
+            <strong className="text-stone-700">Schibsted</strong> and{" "}
+            <strong className="text-stone-700">Telenor</strong>. Ten years
+            working across industries as a consultant — media, telco, public
+            sector, retail, and early-stage ventures.
           </p>
 
+          <p>Co-founder of the IxDA Oslo chapter.</p>
+
           <p>
-            I firmly believe that this journey is not and will never be a
-            one-person endeavour. My effort goes into creating sustainable
-            partnerships, fostering great alliances, and building an extensive
-            network to collaborate with.
+            I firmly believe the best outcomes come from embedded collaboration,
+            not from external advice. That is what{" "}
+            <strong className="text-stone-700">create by™</strong> is built
+            around.
           </p>
         </div>
 
         <div className="mt-16 pt-10 border-t border-stone-200">
           <p className="text-stone-500 mb-6">
-            Have a business, idea, product or service you&apos;re eager to
-            develop or implement? Let&apos;s grab a cup of coffee to explore a
-            potential collaboration.
+            Have a product challenge worth solving? Or a venture worth building?
+            Let&apos;s grab a cup of coffee and explore it.
           </p>
           <div className="flex items-center gap-4">
             <a

@@ -9,7 +9,7 @@ All copy that appears on the live site. Edit here first, then update the compone
 ### Hero
 **Heading:** create innovation by design
 
-**Subtext:** At create by™, I bring over two decades of experience in design, strategy, and execution — transforming ideas into actionable, high-impact digital products and services.
+**Subtext:** I have spent 20 years designing products, building teams, and turning strategy into something that ships. Currently Product and Innovation Director at Manyone. Through create by™, I take on select engagements and build new digital ventures from scratch.
 
 ---
 
@@ -53,16 +53,16 @@ A: Yes. Whether it's a week-long sprint or a multi-month engagement, I tailor th
 A: A central one. Good research reduces risk and surfaces the real problems worth solving. I use a mix of qualitative and quantitative methods, and I involve stakeholders throughout.
 
 **Q: Do you work embedded in product teams?**
-A: Yes — embedded collaboration is often where the most impact happens. I can join as a design lead, strategic partner, or hands-on UX practitioner depending on what the team needs.
+A: Yes — it is how I work best, and it is what I do every day in my role at Manyone. For consulting engagements through create by™, embedded collaboration is always the preference over advisory-only work.
 
 **Q: Can we collaborate?**
-A: Most likely, yes. I'm always open to new partnerships, whether you're a startup, an established company, or another designer or consultant. Get in touch and let's explore it.
+A: Possibly. My consulting capacity through create by™ is limited — I run it alongside a full-time leadership role. That means I take on engagements where I can genuinely contribute, not just fill a slot. If you have a concrete challenge, let's talk.
 
 ---
 
 ### CTA section
 **Label:** Get in touch
-**Heading:** Have a business, idea, product or service you're eager to develop or implement?
+**Heading:** Have a product challenge worth solving? Or a venture worth building?
 **Subtext:** Let's grab a cup of coffee to explore a potential collaboration.
 **Button:** Get in touch → mailto:hello@createby.no
 
@@ -73,23 +73,24 @@ A: Most likely, yes. I'm always open to new partnerships, whether you're a start
 **Heading:** My name is Lucas Cueni.
 
 **Body:**
-I am a designer, product and service developer, with a strategic approach and business mindset.
+I am a designer, product developer and strategist with over 20 years of experience across media, telco, public sector and early-stage products.
 
-With over 20 years of experience, I drive innovation through design thinking and thrive best in cross-functional teams. My skills lie in leading and collaborating with teams from diverse backgrounds to deliver successful products and services.
+Currently I work as Product and Innovation Director at Manyone, where I lead product and innovation work embedded in cross-functional teams. Alongside that, I run create by™ for select consulting engagements where I can add real value.
 
-Experience includes innovation leadership roles at Schibsted, co-founder and designer at 'itch Oslo', and UX consulting for clients from various sectors and industries. Co-founder of the IxDA Oslo Chapter.
+I am also a solo builder. I design, prototype and ship digital products myself — using modern AI-assisted development to move fast without a large team behind me. Building new ventures from scratch, one iteration at a time.
 
-I am building up create by™ to use my skills as a designer to solve wicked problems and contribute to building a more sustainable and equitable society.
+Ten years building from the inside — in-house product and design roles at some of Norway's largest organisations, including Schibsted and Telenor. Ten years working across industries as a consultant — media, telco, public sector, retail, and early-stage ventures.
 
-I firmly believe that this journey is not and will never be a one-person endeavour. My effort goes into creating sustainable partnerships, fostering great alliances, and building an extensive network to collaborate with.
+Co-founder of the IxDA Oslo chapter.
 
-**CTA:** Have a business, idea, product or service you're eager to develop or implement? Let's grab a cup of coffee to explore a potential collaboration.
+I firmly believe the best outcomes come from embedded collaboration, not from external advice. That is what create by™ is built around.
+
+**CTA:** Have a product challenge worth solving? Or a venture worth building? Let's grab a cup of coffee and explore it.
 
 ---
 
 ## Footer (all pages)
 
 **create by™** — Cueni AS, 932292793
-Øvre Slottsgate 3, 0157 Oslo, Norway
 
 Links: About · Privacy & Terms · LinkedIn · Twitter · © 2025

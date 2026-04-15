@@ -62,12 +62,12 @@ const faqs = [
   {
     question: "Do you work embedded in product teams?",
     answer:
-      "Yes — embedded collaboration is often where the most impact happens. I can join as a design lead, strategic partner, or hands-on UX practitioner depending on what the team needs.",
+      "Yes — it is how I work best, and it is what I do every day in my role at Manyone. For consulting engagements through create by™, embedded collaboration is always the preference over advisory-only work.",
   },
   {
     question: "Can we collaborate?",
     answer:
-      "Most likely, yes. I'm always open to new partnerships, whether you're a startup, an established company, or another designer or consultant. Get in touch and let's explore it.",
+      "Possibly. My consulting capacity through create by™ is limited — I run it alongside a full-time leadership role. That means I take on engagements where I can genuinely contribute, not just fill a slot. If you have a concrete challenge, let's talk.",
   },
 ];
 
@@ -103,9 +103,10 @@ export default function Home() {
               by design
             </h1>
             <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed">
-              At create by™, I bring over two decades of experience in design,
-              strategy, and execution — transforming ideas into actionable,
-              high-impact digital products and services.
+              I have spent 20 years designing products, building teams, and
+              turning strategy into something that ships. Currently Product and
+              Innovation Director at Manyone. Through create by™, I take on
+              select engagements and build new digital ventures from scratch.
             </p>
           </div>
         </section>
@@ -191,8 +192,7 @@ export default function Home() {
             Get in touch
           </p>
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-8 max-w-2xl leading-tight">
-            Have a business, idea, product or service you&apos;re eager to
-            develop or implement?
+            Have a product challenge worth solving? Or a venture worth building?
           </h2>
           <p className="text-stone-500 mb-10 text-lg">
             Let&apos;s grab a cup of coffee to explore a potential collaboration.
@@ -209,12 +209,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="px-8 py-8 border-t border-stone-200">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-stone-400">
-          <div className="flex flex-col gap-1">
-            <span>
-              <strong className="text-stone-600">create by™</strong> — Cueni
-              AS, 932292793
-            </span>
-            <span>Øvre Slottsgate 3, 0157 Oslo, Norway</span>
+          <div>
+            <strong className="text-stone-600">create by™</strong>
+            <span> — Cueni AS, 932292793</span>
           </div>
           <div className="flex items-center gap-4">
             <Link
