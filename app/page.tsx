@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeroCanvas from "@/components/HeroCanvas";
 
 const services = [
   {
@@ -93,17 +94,20 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="px-8 py-24 md:py-36 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-stone-900 mb-8">
-            create innovation
-            <br />
-            by design
-          </h1>
-          <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed">
-            At create by™, I bring over two decades of experience in design,
-            strategy, and execution — transforming ideas into actionable,
-            high-impact digital products and services.
-          </p>
+        <section className="relative min-h-svh flex items-center px-8 py-24 md:py-36">
+          <HeroCanvas />
+          <div className="relative z-10 max-w-4xl">
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-stone-900 mb-8">
+              create innovation
+              <br />
+              by design
+            </h1>
+            <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed">
+              At create by™, I bring over two decades of experience in design,
+              strategy, and execution — transforming ideas into actionable,
+              high-impact digital products and services.
+            </p>
+          </div>
         </section>
 
         <div className="px-8">
