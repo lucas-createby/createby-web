@@ -51,7 +51,7 @@ const Footer = () => (
           LinkedIn
         </a>
         <a
-          href="https://twitter.com/lucascueni"
+          href="https://twitter.com/lueni"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-stone-700 transition-colors"

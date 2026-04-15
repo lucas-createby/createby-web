@@ -52,7 +52,7 @@ const Footer = () => (
           LinkedIn
         </a>
         <a
-          href="https://twitter.com/lucascueni"
+          href="https://twitter.com/lueni"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-stone-700 transition-colors"
@@ -161,7 +161,7 @@ export default function About() {
               LinkedIn
             </a>
             <a
-              href="https://twitter.com/lucascueni"
+              href="https://twitter.com/lueni"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4"
