@@ -166,7 +166,7 @@ export default function Home() {
             {services.map((s) => (
               <div
                 key={s.number}
-                className={`p-8 md:p-10${s.wide ? " md:col-span-2" : ""}`}
+                className={`bg-white/40 backdrop-blur-sm p-8 md:p-10${s.wide ? " md:col-span-2" : ""}`}
               >
                 <span className="text-xs text-stone-400 mb-4 block">
                   {s.number}
