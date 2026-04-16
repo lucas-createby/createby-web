@@ -26,7 +26,7 @@ const Nav = () => (
 );
 
 const Footer = () => (
-  <footer className="px-8 py-8 border-t border-stone-200 dark:border-stone-800">
+  <footer className="px-8 pt-8 pb-20 border-t border-stone-200 dark:border-stone-800">
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-stone-400 dark:text-stone-600">
       <div>
         <strong className="text-stone-600 dark:text-stone-400">create by™</strong>
