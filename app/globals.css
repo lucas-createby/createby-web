@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #fafaf9;
   --foreground: #1c1917;
@@ -16,6 +18,11 @@ html {
   scroll-behavior: smooth;
   background: #fafaf9;
   color-scheme: light;
+}
+
+html.dark {
+  background: #0f0f0e;
+  color-scheme: dark;
 }
 
 body {

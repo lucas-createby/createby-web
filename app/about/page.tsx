@@ -8,17 +8,17 @@ export const metadata: Metadata = {
 };
 
 const Nav = () => (
-  <nav className="fixed top-0 inset-x-0 z-50 px-8 py-6 flex items-center justify-between border-b border-stone-200/60 bg-[#fafaf9]/70 backdrop-blur-md">
-    <Link href="/" className="text-sm font-medium tracking-tight">
+  <nav className="fixed top-0 inset-x-0 z-50 px-8 py-6 flex items-center justify-between border-b border-stone-200/60 bg-[#fafaf9]/70 backdrop-blur-md dark:border-stone-800/60 dark:bg-[#0f0f0e]/70">
+    <Link href="/" className="text-sm font-medium tracking-tight text-stone-900 dark:text-stone-100">
       create by™
     </Link>
-    <div className="flex items-center gap-6 text-sm text-stone-500">
-      <Link href="/about" className="text-stone-900 font-medium">
+    <div className="flex items-center gap-6 text-sm text-stone-500 dark:text-stone-400">
+      <Link href="/about" className="text-stone-900 font-medium dark:text-stone-100">
         About
       </Link>
       <a
         href="mailto:hello@createby.no"
-        className="hover:text-stone-900 transition-colors"
+        className="hover:text-stone-900 transition-colors dark:hover:text-stone-100"
       >
         Contact
       </a>
@@ -27,19 +27,19 @@ const Nav = () => (
 );
 
 const Footer = () => (
-  <footer className="px-8 py-8 border-t border-stone-200">
-    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-stone-400">
+  <footer className="px-8 py-8 border-t border-stone-200 dark:border-stone-800">
+    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-stone-400 dark:text-stone-600">
       <div>
-        <strong className="text-stone-600">create by™</strong>
+        <strong className="text-stone-600 dark:text-stone-400">create by™</strong>
         <span> — Cueni AS, 932292793</span>
       </div>
       <div className="flex items-center gap-4">
-        <Link href="/about" className="hover:text-stone-700 transition-colors">
+        <Link href="/about" className="hover:text-stone-700 transition-colors dark:hover:text-stone-300">
           About
         </Link>
         <Link
           href="/terms-privacy"
-          className="hover:text-stone-700 transition-colors"
+          className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
         >
           Privacy &amp; Terms
         </Link>
@@ -47,7 +47,7 @@ const Footer = () => (
           href="https://www.linkedin.com/in/lucascueni"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-stone-700 transition-colors"
+          className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
         >
           LinkedIn
         </a>
@@ -55,7 +55,7 @@ const Footer = () => (
           href="https://twitter.com/lueni"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-stone-700 transition-colors"
+          className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
         >
           Twitter
         </a>
@@ -71,15 +71,15 @@ export default function About() {
       <Nav />
 
       <main className="flex-1 px-8 pt-32 pb-20 max-w-3xl">
-        <p className="text-xs uppercase tracking-widest text-stone-400 mb-12">
+        <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
           About
         </p>
 
-        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-10 leading-tight">
+        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-10 leading-tight dark:text-stone-100">
           My name is Lucas Cueni.
         </h1>
 
-        <div className="space-y-6 text-stone-500 text-base leading-relaxed">
+        <div className="space-y-6 text-stone-500 text-base leading-relaxed dark:text-stone-400">
           <p>
             I am a designer, product developer and strategist. I work in the
             intersection of design, technology and organisational development.
@@ -87,22 +87,22 @@ export default function About() {
 
           <p>
             Currently Product and Innovation Director at{" "}
-            <strong className="text-stone-700">Manyone</strong>, where I lead
+            <strong className="text-stone-700 dark:text-stone-300">Manyone</strong>, where I lead
             product and innovation work embedded in cross-functional client
             teams. Alongside that, I run{" "}
-            <strong className="text-stone-700">create by™</strong> for select
+            <strong className="text-stone-700 dark:text-stone-300">create by™</strong> for select
             consulting engagements.
           </p>
 
           <p>
             My background is in design — a BA from{" "}
-            <strong className="text-stone-700">Central Saint Martins</strong>, a
+            <strong className="text-stone-700 dark:text-stone-300">Central Saint Martins</strong>, a
             Master in Interaction and Service Design from the{" "}
-            <strong className="text-stone-700">
+            <strong className="text-stone-700 dark:text-stone-300">
               Oslo School of Architecture and Design
             </strong>
             , and an Executive Master in Innovation from{" "}
-            <strong className="text-stone-700">
+            <strong className="text-stone-700 dark:text-stone-300">
               BI Norwegian Business School
             </strong>
             . That combination shapes how I work: I think in systems, design in
@@ -112,8 +112,8 @@ export default function About() {
           <p>
             Ten years building from the inside — in-house product and design
             roles at{" "}
-            <strong className="text-stone-700">Schibsted</strong> and{" "}
-            <strong className="text-stone-700">Telenor</strong>, scaling a team
+            <strong className="text-stone-700 dark:text-stone-300">Schibsted</strong> and{" "}
+            <strong className="text-stone-700 dark:text-stone-300">Telenor</strong>, scaling a team
             from 4 to 50+ people, shipping products, running intrapreneurship
             programmes. Ten years working across industries as a consultant —
             media, telco, public sector, packaging, food service and early-stage
@@ -128,27 +128,27 @@ export default function About() {
 
           <p>
             Co-founder of the{" "}
-            <strong className="text-stone-700">IxDA Oslo chapter</strong>, which
+            <strong className="text-stone-700 dark:text-stone-300">IxDA Oslo chapter</strong>, which
             grew from 6 people over a beer to over 6 000 members.
           </p>
 
           <p>
             I believe the best outcomes come from embedded collaboration, not
             external advice. That is what{" "}
-            <strong className="text-stone-700">create by™</strong> is built
+            <strong className="text-stone-700 dark:text-stone-300">create by™</strong> is built
             around.
           </p>
         </div>
 
-        <div className="mt-16 pt-10 border-t border-stone-200">
-          <p className="text-stone-500 mb-6">
+        <div className="mt-16 pt-10 border-t border-stone-200 dark:border-stone-800">
+          <p className="text-stone-500 mb-6 dark:text-stone-400">
             Working on something worth building? Drop me a line and let&apos;s
             have a coffee.
           </p>
           <div className="flex items-center gap-4">
             <a
               href="mailto:hello@createby.no"
-              className="inline-block bg-stone-900 text-white text-sm font-medium px-6 py-3 hover:bg-stone-700 transition-colors"
+              className="inline-block bg-stone-900 text-white text-sm font-medium px-6 py-3 hover:bg-stone-700 transition-colors dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300"
             >
               hello@createby.no
             </a>
@@ -156,7 +156,7 @@ export default function About() {
               href="https://www.linkedin.com/in/lucascueni"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4"
+              className="text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4 dark:text-stone-600 dark:hover:text-stone-300"
             >
               LinkedIn
             </a>
@@ -164,7 +164,7 @@ export default function About() {
               href="https://twitter.com/lueni"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4"
+              className="text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4 dark:text-stone-600 dark:hover:text-stone-300"
             >
               Twitter
             </a>

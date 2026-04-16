@@ -119,17 +119,17 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Nav */}
-      <nav className="fixed top-0 inset-x-0 z-50 px-8 py-6 flex items-center justify-between border-b border-stone-200/60 bg-[#fafaf9]/70 backdrop-blur-md">
-        <Link href="/" className="text-sm font-medium tracking-tight">
+      <nav className="fixed top-0 inset-x-0 z-50 px-8 py-6 flex items-center justify-between border-b border-stone-200/60 bg-[#fafaf9]/70 backdrop-blur-md dark:border-stone-800/60 dark:bg-[#0f0f0e]/70">
+        <Link href="/" className="text-sm font-medium tracking-tight text-stone-900 dark:text-stone-100">
           create by™
         </Link>
-        <div className="flex items-center gap-6 text-sm text-stone-500">
-          <Link href="/about" className="hover:text-stone-900 transition-colors">
+        <div className="flex items-center gap-6 text-sm text-stone-500 dark:text-stone-400">
+          <Link href="/about" className="hover:text-stone-900 transition-colors dark:hover:text-stone-100">
             About
           </Link>
           <a
             href="mailto:hello@createby.no"
-            className="hover:text-stone-900 transition-colors"
+            className="hover:text-stone-900 transition-colors dark:hover:text-stone-100"
           >
             Contact
           </a>
@@ -142,7 +142,7 @@ export default function Home() {
           <HeroCanvas />
           <div className="relative z-10 max-w-4xl">
             <AnimatedHeroText />
-            <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed dark:text-stone-400">
               Twenty years working at the intersection of design, strategy and
               technology. I help organisations figure out what to build, build
               the right thing, and make sure it actually gets used. Currently
@@ -153,27 +153,27 @@ export default function Home() {
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200" />
+          <div className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* Services */}
         <section className="px-8 py-20">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12">
+          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
             What I do
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200/60">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200/60 dark:bg-stone-800/60">
             {services.map((s) => (
               <div
                 key={s.number}
-                className={`bg-white/40 backdrop-blur-sm p-8 md:p-10${s.wide ? " md:col-span-2" : ""}`}
+                className={`bg-white/40 backdrop-blur-sm p-8 md:p-10 dark:bg-stone-900/40${s.wide ? " md:col-span-2" : ""}`}
               >
-                <span className="text-xs text-stone-400 mb-4 block">
+                <span className="text-xs text-stone-400 mb-4 block dark:text-stone-600">
                   {s.number}
                 </span>
-                <h2 className="text-lg font-medium text-stone-900 mb-3 leading-snug">
+                <h2 className="text-lg font-medium text-stone-900 mb-3 leading-snug dark:text-stone-100">
                   {s.title}
                 </h2>
-                <p className={`text-sm text-stone-500 leading-relaxed${s.wide ? " max-w-2xl" : ""}`}>
+                <p className={`text-sm text-stone-500 leading-relaxed dark:text-stone-400${s.wide ? " max-w-2xl" : ""}`}>
                   {s.description}
                 </p>
               </div>
@@ -182,27 +182,27 @@ export default function Home() {
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200" />
+          <div className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* Selected Work */}
         <section className="px-8 py-20">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12">
+          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
             Selected work
           </p>
-          <div className="divide-y divide-stone-200">
+          <div className="divide-y divide-stone-200 dark:divide-stone-800">
             {work.map((w) => (
               <div key={w.client} className="py-8 md:py-10">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
-                  <h2 className="text-base font-medium text-stone-900">
+                  <h2 className="text-base font-medium text-stone-900 dark:text-stone-100">
                     {w.client}{" "}
-                    <span className="text-stone-400 font-normal">— {w.title}</span>
+                    <span className="text-stone-400 font-normal dark:text-stone-600">— {w.title}</span>
                   </h2>
-                  <span className="text-xs text-stone-400 shrink-0">
+                  <span className="text-xs text-stone-400 shrink-0 dark:text-stone-600">
                     {w.year} — {w.context}
                   </span>
                 </div>
-                <p className="text-sm text-stone-500 leading-relaxed max-w-2xl">
+                <p className="text-sm text-stone-500 leading-relaxed max-w-2xl dark:text-stone-400">
                   {w.description}
                 </p>
               </div>
@@ -212,32 +212,32 @@ export default function Home() {
             href="https://www.linkedin.com/in/lucascueni"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-10 text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4"
+            className="inline-block mt-10 text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4 dark:text-stone-600 dark:hover:text-stone-300"
           >
             More on LinkedIn
           </a>
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200" />
+          <div className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* Logo Ticker */}
         <LogoTicker />
 
         <div className="px-8">
-          <div className="border-t border-stone-200" />
+          <div className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* Currently */}
         <section className="px-8 py-20 max-w-3xl">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-10">
+          <p className="text-xs uppercase tracking-widest text-stone-400 mb-10 dark:text-stone-600">
             Currently
           </p>
-          <div className="space-y-6 text-stone-500 text-base leading-relaxed">
+          <div className="space-y-6 text-stone-500 text-base leading-relaxed dark:text-stone-400">
             <p>
               Product and Innovation Director at{" "}
-              <strong className="text-stone-700">Manyone</strong> — leading
+              <strong className="text-stone-700 dark:text-stone-300">Manyone</strong> — leading
               product and innovation work embedded in client teams across Norway
               and Europe.
             </p>
@@ -249,32 +249,32 @@ export default function Home() {
             </p>
             <p>
               Select consulting engagements available through{" "}
-              <strong className="text-stone-700">create by™</strong>.
+              <strong className="text-stone-700 dark:text-stone-300">create by™</strong>.
             </p>
           </div>
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200" />
+          <div className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* FAQ */}
         <section className="px-8 py-20 max-w-3xl">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12">
+          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
             Frequently asked
           </p>
-          <div className="divide-y divide-stone-200">
+          <div className="divide-y divide-stone-200 dark:divide-stone-800">
             {faqs.map((faq) => (
               <details key={faq.question} className="group py-6">
                 <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <span className="text-base font-medium text-stone-900 pr-8">
+                  <span className="text-base font-medium text-stone-900 pr-8 dark:text-stone-100">
                     {faq.question}
                   </span>
-                  <span className="text-stone-400 text-xl leading-none shrink-0 group-open:rotate-45 transition-transform duration-200">
+                  <span className="text-stone-400 text-xl leading-none shrink-0 group-open:rotate-45 transition-transform duration-200 dark:text-stone-600">
                     +
                   </span>
                 </summary>
-                <p className="mt-4 text-sm text-stone-500 leading-relaxed">
+                <p className="mt-4 text-sm text-stone-500 leading-relaxed dark:text-stone-400">
                   {faq.answer}
                 </p>
               </details>
@@ -283,23 +283,23 @@ export default function Home() {
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200" />
+          <div className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* CTA */}
         <section className="px-8 py-24 md:py-32">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-6">
+          <p className="text-xs uppercase tracking-widest text-stone-400 mb-6 dark:text-stone-600">
             Get in touch
           </p>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-8 max-w-2xl leading-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-8 max-w-2xl leading-tight dark:text-stone-100">
             Working on something worth building?
           </h2>
-          <p className="text-stone-500 mb-10 text-lg">
+          <p className="text-stone-500 mb-10 text-lg dark:text-stone-400">
             Drop me a line and let&apos;s have a coffee.
           </p>
           <a
             href="mailto:hello@createby.no"
-            className="inline-block bg-stone-900 text-white text-sm font-medium px-6 py-3 hover:bg-stone-700 transition-colors"
+            className="inline-block bg-stone-900 text-white text-sm font-medium px-6 py-3 hover:bg-stone-700 transition-colors dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300"
           >
             Get in touch
           </a>
@@ -307,22 +307,22 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="px-8 py-8 border-t border-stone-200">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-stone-400">
+      <footer className="px-8 py-8 border-t border-stone-200 dark:border-stone-800">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-stone-400 dark:text-stone-600">
           <div>
-            <strong className="text-stone-600">create by™</strong>
+            <strong className="text-stone-600 dark:text-stone-400">create by™</strong>
             <span> — Cueni AS, 932292793</span>
           </div>
           <div className="flex items-center gap-4">
             <Link
               href="/about"
-              className="hover:text-stone-700 transition-colors"
+              className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
             >
               About
             </Link>
             <Link
               href="/terms-privacy"
-              className="hover:text-stone-700 transition-colors"
+              className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
             >
               Privacy &amp; Terms
             </Link>
@@ -330,7 +330,7 @@ export default function Home() {
               href="https://www.linkedin.com/in/lucascueni"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-stone-700 transition-colors"
+              className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
             >
               LinkedIn
             </a>
@@ -338,7 +338,7 @@ export default function Home() {
               href="https://twitter.com/lueni"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-stone-700 transition-colors"
+              className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
             >
               Twitter
             </a>
