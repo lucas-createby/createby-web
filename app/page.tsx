@@ -211,6 +211,14 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <a
+            href="https://www.linkedin.com/in/lucascueni"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-10 text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4"
+          >
+            More on LinkedIn
+          </a>
         </section>
 
         <div className="px-8">
