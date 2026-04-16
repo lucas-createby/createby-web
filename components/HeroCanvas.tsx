@@ -106,9 +106,7 @@ export default function HeroCanvas() {
 
         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
         path.setAttribute('fill', 'none')
-        path.setAttribute('stroke', '#1c1917')
         path.setAttribute('stroke-width', '1')
-        path.setAttribute('stroke-opacity', '0.12')
         svg.appendChild(path)
         paths.push(path)
       }
@@ -156,6 +154,9 @@ export default function HeroCanvas() {
           const fy = p.y + p.wy + (pi === 0 ? 0 : p.cy)
           d += (pi === 0 ? `M ${fx} ${fy}` : ` L ${fx} ${fy}`)
         }
+        const dark = document.documentElement.classList.contains('dark')
+        paths[li].setAttribute('stroke', dark ? '#f5f5f4' : '#1c1917')
+        paths[li].setAttribute('stroke-opacity', dark ? '0.10' : '0.12')
         paths[li].setAttribute('d', d)
       }
 
