@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import BackgroundGradient from "@/components/BackgroundGradient";
 import "./globals.css";
 
 const geist = Geist({
@@ -30,7 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} h-full`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <BackgroundGradient />
+        {children}
+      </body>
     </html>
   );
 }
