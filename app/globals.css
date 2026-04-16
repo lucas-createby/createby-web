@@ -26,6 +26,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker 35s linear infinite;
+}
+
 ::selection {
   background: #1c1917;
   color: #fafaf9;

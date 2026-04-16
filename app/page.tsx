@@ -1,5 +1,6 @@
 import Link from "next/link";
 import HeroCanvas from "@/components/HeroCanvas";
+import LogoTicker from "@/components/LogoTicker";
 
 const services = [
   {
@@ -210,6 +211,13 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <div className="px-8">
+          <div className="border-t border-stone-200" />
+        </div>
+
+        {/* Logo Ticker */}
+        <LogoTicker />
 
         <div className="px-8">
           <div className="border-t border-stone-200" />
