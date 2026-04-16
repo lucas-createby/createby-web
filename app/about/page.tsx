@@ -121,9 +121,9 @@ export default function About() {
           </p>
 
           <p>
-            I also build things from scratch. As a solo founder, I design,
-            prototype and ship digital products myself — using AI-assisted
-            development to move faster than a team of one has any right to.
+            I also build things independently. I design, prototype and ship
+            digital products — using AI tools to explore and validate ideas
+            faster, while working with others where it matters most.
           </p>
 
           <p>
@@ -142,8 +142,8 @@ export default function About() {
 
         <div className="mt-16 pt-10 border-t border-stone-200">
           <p className="text-stone-500 mb-6">
-            Have a product challenge worth solving? Or a venture worth building?
-            Let&apos;s grab a cup of coffee and explore it.
+            Working on something worth building? Drop me a line and let&apos;s
+            have a coffee.
           </p>
           <div className="flex items-center gap-4">
             <a

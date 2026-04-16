@@ -7,7 +7,7 @@ const services = [
     number: "01",
     title: "Innovation & Product Strategy",
     description:
-      "From fuzzy opportunity to clear roadmap. I combine design thinking with business strategy to define what to build, why, and how to validate it fast.",
+      "From unclear opportunity to clear direction. Design thinking and business strategy combined — to define what to build, why it matters, and how to test that assumption before committing to it.",
   },
   {
     number: "02",
@@ -19,13 +19,13 @@ const services = [
     number: "03",
     title: "User Experience & Interaction Design",
     description:
-      "Research-led, prototype-driven interface design. I work from first principles to high-fidelity — and I know the difference between what users say and what they do.",
+      "Research-led, prototype-driven interface design. From first principles to high-fidelity — grounded in what people actually do, not just what they say they want.",
   },
   {
     number: "04",
     title: "Product & Design Leadership",
     description:
-      "Embedded leadership for product and design teams. OKRs, design systems, cross-functional ways of working. Built to last, not just to document.",
+      "Embedded leadership for product and design teams. OKRs, design systems, cross-functional ways of working — built to outlast the engagement, not just the documentation.",
   },
   {
     number: "05",
@@ -41,7 +41,7 @@ const work = [
     client: "Posten Bring",
     title: "HR Transformation",
     description:
-      "Applying service design and agile methodology to transform how a major Norwegian organisation manages its people processes. Design as the vehicle for change.",
+      "Service design and agile methodology applied to how a major Norwegian organisation manages its people processes. A change programme, not just a deliverable.",
     year: "2025",
     context: "Manyone",
   },
@@ -90,12 +90,12 @@ const faqs = [
   {
     question: "How do you foster collaboration?",
     answer:
-      "By building trust, creating shared language, and designing processes that invite everyone into the work. Cross-functional teams produce the best outcomes — I create the conditions for that.",
+      "By building trust, creating shared language, and designing processes that invite everyone into the work. Cross-functional teams consistently produce better outcomes — I create the conditions for that to happen.",
   },
   {
     question: "Can I engage you for both large-scale and smaller projects?",
     answer:
-      "Yes. Whether it's a week-long sprint or a multi-month engagement, I tailor the scope and format to your needs. Smaller projects are often a great way to get started.",
+      "Yes. Whether it's a week-long sprint or a multi-month engagement, I tailor the scope and format to your needs. Smaller projects are often a good way to get started.",
   },
   {
     question: "What role does research play in your design process?",
@@ -146,10 +146,11 @@ export default function Home() {
               by design
             </h1>
             <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed">
-              I have spent 20 years turning design into strategy and strategy
-              into something that ships. Currently Product and Innovation
-              Director at Manyone. Through create by™, I take on select
-              engagements and build new digital ventures from scratch.
+              Twenty years working at the intersection of design, strategy and
+              technology. I help organisations figure out what to build, build
+              the right thing, and make sure it actually gets used. Currently
+              Product and Innovation Director at Manyone. Through create by™, I
+              take on select engagements.
             </p>
           </div>
         </section>
@@ -236,9 +237,10 @@ export default function Home() {
               and Europe.
             </p>
             <p>
-              Building new digital ventures as a solo founder — designing,
-              prototyping and shipping with AI-assisted development. One person,
-              moving fast.
+              I also build things independently — designing, prototyping and
+              shipping digital products from the ground up. AI tools help me
+              explore and validate ideas faster, but the thinking, the craft
+              and the collaboration with others is where the real work happens.
             </p>
             <p>
               Select consulting engagements available through{" "}
@@ -285,10 +287,10 @@ export default function Home() {
             Get in touch
           </p>
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-8 max-w-2xl leading-tight">
-            Have a product challenge worth solving? Or a venture worth building?
+            Working on something worth building?
           </h2>
           <p className="text-stone-500 mb-10 text-lg">
-            Let&apos;s grab a cup of coffee to explore a potential collaboration.
+            Drop me a line and let&apos;s have a coffee.
           </p>
           <a
             href="mailto:hello@createby.no"
