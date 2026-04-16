@@ -11,11 +11,15 @@ export default function LogoTicker() {
       <p className="text-xs uppercase tracking-widest text-stone-400 mb-8 px-8">
         Professional collaborations over the years…
       </p>
-      <div className="relative">
-        {/* Fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-[#fafaf9] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-[#fafaf9] to-transparent" />
-
+      <div
+        className="relative"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        }}
+      >
         <div className="flex animate-ticker gap-16 items-center w-max">
           {track.map((src, i) => (
             <div key={i} className="shrink-0 flex items-center justify-center h-8">
