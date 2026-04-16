@@ -155,8 +155,8 @@ export default function HeroCanvas() {
           d += (pi === 0 ? `M ${fx} ${fy}` : ` L ${fx} ${fy}`)
         }
         const dark = document.documentElement.classList.contains('dark')
-        paths[li].setAttribute('stroke', dark ? '#f5f5f4' : '#1c1917')
-        paths[li].setAttribute('stroke-opacity', dark ? '0.10' : '0.12')
+        paths[li].setAttribute('stroke', dark ? '#ffffff' : '#1c1917')
+        paths[li].setAttribute('stroke-opacity', dark ? '0.15' : '0.12')
         paths[li].setAttribute('d', d)
       }
 

@@ -21,7 +21,7 @@ html {
 }
 
 html.dark {
-  background: #0f0f0e;
+  background: radial-gradient(ellipse at 60% 20%, #1c1a18 0%, #0f0f0e 70%);
   color-scheme: dark;
 }
 

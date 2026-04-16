@@ -11,14 +11,6 @@ const LIGHT_BLOBS = [
   { r: 215, g: 228, b: 236, phase: 0.7,  phaseSpd: 0.00017, ampX: 0.26, ampY: 0.16, baseX: 0.45, baseY: 0.35, rx: 0.45, ry: 0.50 },
 ]
 
-const DARK_BLOBS = [
-  { r: 48,  g: 36,  b: 20,  phase: 0.0,  phaseSpd: 0.00018, ampX: 0.28, ampY: 0.18, baseX: 0.15, baseY: 0.25, rx: 0.55, ry: 0.40 },
-  { r: 18,  g: 32,  b: 50,  phase: 1.2,  phaseSpd: 0.00014, ampX: 0.22, ampY: 0.25, baseX: 0.75, baseY: 0.20, rx: 0.50, ry: 0.45 },
-  { r: 25,  g: 38,  b: 22,  phase: 2.4,  phaseSpd: 0.00020, ampX: 0.30, ampY: 0.20, baseX: 0.50, baseY: 0.65, rx: 0.60, ry: 0.35 },
-  { r: 40,  g: 22,  b: 42,  phase: 3.6,  phaseSpd: 0.00016, ampX: 0.25, ampY: 0.22, baseX: 0.20, baseY: 0.75, rx: 0.48, ry: 0.42 },
-  { r: 48,  g: 36,  b: 20,  phase: 4.8,  phaseSpd: 0.00012, ampX: 0.20, ampY: 0.28, baseX: 0.80, baseY: 0.70, rx: 0.52, ry: 0.38 },
-  { r: 18,  g: 32,  b: 50,  phase: 0.7,  phaseSpd: 0.00017, ampX: 0.26, ampY: 0.16, baseX: 0.45, baseY: 0.35, rx: 0.45, ry: 0.50 },
-]
 
 export default function BackgroundGradient() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -42,12 +34,18 @@ export default function BackgroundGradient() {
     function draw() {
       const t = performance.now()
       const dark = document.documentElement.classList.contains('dark')
-      const BLOBS = dark ? DARK_BLOBS : LIGHT_BLOBS
-      const alpha0 = dark ? 0.70 : 0.55
-      const alpha1 = dark ? 0.35 : 0.25
-      const alpha2 = dark ? 0.10 : 0.07
 
       ctx!.clearRect(0, 0, W, H)
+
+      if (dark) {
+        rafId = requestAnimationFrame(draw)
+        return
+      }
+
+      const BLOBS = LIGHT_BLOBS
+      const alpha0 = 0.55
+      const alpha1 = 0.25
+      const alpha2 = 0.07
 
       for (const b of BLOBS) {
         const cx = (b.baseX + Math.cos(t * b.phaseSpd + b.phase) * b.ampX) * W
