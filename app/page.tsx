@@ -162,11 +162,11 @@ export default function Home() {
           <p className="text-xs uppercase tracking-widest text-stone-400 mb-12">
             What I do
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200/60">
             {services.map((s) => (
               <div
                 key={s.number}
-                className={`bg-[#fafaf9] p-8 md:p-10${s.wide ? " md:col-span-2" : ""}`}
+                className={`p-8 md:p-10${s.wide ? " md:col-span-2" : ""}`}
               >
                 <span className="text-xs text-stone-400 mb-4 block">
                   {s.number}
