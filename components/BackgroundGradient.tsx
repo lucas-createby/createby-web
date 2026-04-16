@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 
 const LIGHT_BLOBS = [
-  { r: 242, g: 238, b: 223, phase: 0.0,  phaseSpd: 0.00018, ampX: 0.28, ampY: 0.18, baseX: 0.15, baseY: 0.25, rx: 0.55, ry: 0.40 },
+  { r: 242, g: 238, b: 223, phase: 0.0,  phaseSpd: 0.00018, ampX: 0.28, ampY: 0.18, baseX: 0.15, baseY: 0.40, rx: 0.50, ry: 0.35 },
   { r: 215, g: 228, b: 236, phase: 1.2,  phaseSpd: 0.00014, ampX: 0.22, ampY: 0.25, baseX: 0.75, baseY: 0.20, rx: 0.50, ry: 0.45 },
   { r: 221, g: 223, b: 210, phase: 2.4,  phaseSpd: 0.00020, ampX: 0.30, ampY: 0.20, baseX: 0.50, baseY: 0.65, rx: 0.60, ry: 0.35 },
   { r: 225, g: 218, b: 224, phase: 3.6,  phaseSpd: 0.00016, ampX: 0.25, ampY: 0.22, baseX: 0.20, baseY: 0.75, rx: 0.48, ry: 0.42 },
@@ -43,9 +43,9 @@ export default function BackgroundGradient() {
       }
 
       const BLOBS = LIGHT_BLOBS
-      const alpha0 = 0.55
-      const alpha1 = 0.25
-      const alpha2 = 0.07
+      const alpha0 = 0.40
+      const alpha1 = 0.18
+      const alpha2 = 0.05
 
       for (const b of BLOBS) {
         const cx = (b.baseX + Math.cos(t * b.phaseSpd + b.phase) * b.ampX) * W

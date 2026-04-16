@@ -134,17 +134,18 @@ export default function HeroCanvas() {
           const dx = p.x - mouse.sx
           const dy = p.y - mouse.sy
           const dist = Math.hypot(dx, dy)
-          if (dist < l) {
-            const s = 1 - dist / l
-            const f = Math.cos(dist * 0.001) * s * l * mouse.vs * 0.00035
+          const radius = Math.max(l, mouse.vs)
+          if (dist < radius) {
+            const s = 1 - dist / radius
+            const f = Math.cos(dist * 0.001) * s * radius * mouse.vs * 0.00056
             const a = Math.atan2(dy, dx)
             p.cvx += Math.cos(a) * f
             p.cvy += Math.sin(a) * f
           }
-          p.cvx += -p.cx * 0.01
-          p.cvy += -p.cy * 0.01
-          p.cvx *= 0.95
-          p.cvy *= 0.95
+          p.cvx += -p.cx * 0.015
+          p.cvy += -p.cy * 0.015
+          p.cvx *= 0.92
+          p.cvy *= 0.92
           p.cx += p.cvx
           p.cy += p.cvy
           p.cx = Math.min(50, Math.max(-50, p.cx))
