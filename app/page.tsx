@@ -1,6 +1,7 @@
 import Link from "next/link";
 import HeroCanvas from "@/components/HeroCanvas";
 import LogoTicker from "@/components/LogoTicker";
+import AnimatedHeroText from "@/components/AnimatedHeroText";
 
 const services = [
   {
@@ -140,11 +141,7 @@ export default function Home() {
         <section className="relative min-h-svh flex items-center px-8 py-24 md:py-36">
           <HeroCanvas />
           <div className="relative z-10 max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-stone-900 mb-8">
-              create innovation
-              <br />
-              by design
-            </h1>
+            <AnimatedHeroText />
             <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed">
               Twenty years working at the intersection of design, strategy and
               technology. I help organisations figure out what to build, build
