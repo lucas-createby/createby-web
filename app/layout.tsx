@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
 import Script from "next/script";
 import BackgroundGradient from "@/components/BackgroundGradient";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -7,9 +7,16 @@ import "./globals.css";
 
 const GA_ID = "G-C00GCWS23J";
 
-const geist = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const manrope = Manrope({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
 });
 
 const description =
@@ -49,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${plusJakartaSans.variable} ${manrope.variable} h-full`} suppressHydrationWarning>
       <head>
         {/* Set theme before paint to avoid flash */}
         <script
