@@ -8,7 +8,9 @@ export const metadata: Metadata = {
 
 const Nav = () => (
   <nav className="fixed top-0 inset-x-0 z-50 px-8 py-6 flex items-center justify-between border-b border-stone-200/60 bg-[#fafaf9]/70 backdrop-blur-md dark:border-stone-800/60 dark:bg-[#0f0f0e]/70">
-    <Link href="/" className="text-sm font-medium tracking-tight text-stone-900 dark:text-stone-100">
+    <Link href="/" className="flex items-center gap-2.5 text-sm font-medium tracking-tight text-stone-900 dark:text-stone-100">
+      <img src="/media/favicon-light.png" alt="" aria-hidden="true" className="h-5 w-auto dark:hidden" />
+      <img src="/media/favicon-dark.png" alt="" aria-hidden="true" className="h-5 w-auto hidden dark:block" />
       create by™
     </Link>
     <div className="flex items-center gap-6 text-sm text-stone-500 dark:text-stone-400">
