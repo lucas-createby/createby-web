@@ -3,6 +3,15 @@ import { useEffect } from 'react';
 
 export default function ScrollAnimations() {
   useEffect(() => {
+    // Safety fallback: if JS runs but observer misbehaves (reduced-motion,
+    // hydration race, etc.), reveal all animated content after 1.5s so the
+    // page can never be left blank.
+    const fallback = window.setTimeout(() => {
+      document
+        .querySelectorAll('[data-animate]:not(.in-view), [data-animate-left]:not(.in-view), [data-animate-line]:not(.in-view)')
+        .forEach((el) => el.classList.add('in-view'));
+    }, 1500);
+
     // A + C: Fade/drift + stagger
     const observer = new IntersectionObserver(
       (entries) => {
@@ -43,6 +52,7 @@ export default function ScrollAnimations() {
     onScroll();
 
     return () => {
+      window.clearTimeout(fallback);
       observer.disconnect();
       lineObserver.disconnect();
       window.removeEventListener('scroll', onScroll);

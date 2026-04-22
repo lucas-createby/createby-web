@@ -51,38 +51,51 @@ h1, h2, h3, h4, h5, h6 {
   color: #fafaf9;
 }
 
-/* ── Scroll animations ── */
-[data-animate] {
+/* ── Scroll animations ──
+   Hidden states only apply when JS has enabled them (.js on <html>).
+   No JS → no hidden state → content always visible. */
+.js [data-animate] {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1),
               transform 0.55s cubic-bezier(0.4,0,0.2,1);
 }
-[data-animate].in-view {
+.js [data-animate].in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* B: Divider line draw */
-[data-animate-line] {
+.js [data-animate-line] {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
 }
-[data-animate-line].in-view {
+.js [data-animate-line].in-view {
   transform: scaleX(1);
 }
 
 /* E: Slide from left */
-[data-animate-left] {
+.js [data-animate-left] {
   opacity: 0;
   transform: translateX(-12px);
   transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
               transform 0.5s cubic-bezier(0.4,0,0.2,1);
 }
-[data-animate-left].in-view {
+.js [data-animate-left].in-view {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Reduced-motion: show everything immediately, skip transforms */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-animate],
+  .js [data-animate-left],
+  .js [data-animate-line] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ── Nav solidification ── */

@@ -59,10 +59,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakartaSans.variable} ${manrope.variable} h-full`} suppressHydrationWarning>
       <head>
-        {/* Set theme before paint to avoid flash */}
+        {/* Set theme + enable JS-gated animation hidden states before paint.
+            If this inline script fails for any reason, .js is never added
+            → CSS keeps content fully visible (fallback by default). */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('theme');var d=t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');})()`,
+            __html: `(function(){try{document.documentElement.classList.add('js');var t=localStorage.getItem('theme');var d=t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})()`,
           }}
         />
       </head>

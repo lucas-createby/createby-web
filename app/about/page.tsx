@@ -84,7 +84,7 @@ export default function About() {
           My name is Lucas Cueni.
         </h1>
 
-        <div data-animate className="space-y-6 text-stone-500 text-base leading-relaxed dark:text-stone-400">
+        <div className="space-y-6 text-stone-500 text-base leading-relaxed dark:text-stone-400">
           <p>
             I am a designer, product developer and strategist. I work in the
             intersection of design, technology and organisational development.

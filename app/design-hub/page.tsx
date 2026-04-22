@@ -43,6 +43,7 @@ const animations = [
   { name: "Fade + drift", class: "A", desc: "Content fades up 18px on scroll enter. 0.55s cubic-bezier." },
   { name: "Stagger", class: "C", desc: "Grid/list children enter with 90ms delay between each item." },
   { name: "Nav solidify", class: "D", desc: "Nav backdrop opacifies as user scrolls past 24px." },
+  { name: "Hero interaction", class: "E", desc: "Accent word in hero shifts to italic serif on cursor proximity. Subtle weight + colour transition, 240ms ease-out." },
 ];
 
 export default function DesignHub() {
@@ -74,7 +75,7 @@ export default function DesignHub() {
         {/* Brand Assets */}
         <section className="mb-16">
           <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-6">Brand Assets</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div>
               <div className="h-20 bg-white border border-stone-200 dark:border-stone-800 flex items-center justify-center mb-2 rounded-sm">
                 <img src="/media/favicon-light.png" alt="Favicon light" className="h-8 w-auto" />
@@ -96,20 +97,6 @@ export default function DesignHub() {
               <p className="text-xs font-medium text-stone-600 dark:text-stone-400">Wordmark</p>
               <p className="text-xs text-stone-400 font-mono">109 × 20</p>
             </div>
-            <div>
-              <div className="h-20 bg-white border border-stone-200 dark:border-stone-800 flex items-center justify-center mb-2 rounded-sm">
-                <img src="/media/apple-touch-icon.png" alt="Apple touch icon" className="h-12 w-auto rounded" />
-              </div>
-              <p className="text-xs font-medium text-stone-600 dark:text-stone-400">Apple Touch Icon</p>
-              <p className="text-xs text-stone-400 font-mono">180 × 180</p>
-            </div>
-          </div>
-          <div className="mt-4">
-            <div className="border border-stone-200 dark:border-stone-800 rounded-sm overflow-hidden">
-              <img src="/media/og-image.png" alt="OG social preview" className="w-full h-auto" />
-            </div>
-            <p className="text-xs font-medium text-stone-600 dark:text-stone-400 mt-2">OG / Social Preview</p>
-            <p className="text-xs text-stone-400 font-mono">1200 × 630</p>
           </div>
         </section>
 
