@@ -155,7 +155,7 @@ export default function Home() {
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200 dark:border-stone-800" />
+          <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* Services */}
@@ -186,7 +186,7 @@ export default function Home() {
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200 dark:border-stone-800" />
+          <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* Selected Work */}
@@ -196,7 +196,7 @@ export default function Home() {
           </p>
           <div className="divide-y divide-stone-200 dark:divide-stone-800">
             {work.map((w, i) => (
-              <div key={w.client} data-animate data-stagger={i} className="py-8 md:py-10">
+              <div key={w.client} data-animate-left data-stagger={i} className="py-8 md:py-10">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
                   <h2 className="text-base font-medium text-stone-900 dark:text-stone-100">
                     {w.client}{" "}
@@ -223,14 +223,14 @@ export default function Home() {
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200 dark:border-stone-800" />
+          <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* Logo Ticker */}
         <LogoTicker />
 
         <div className="px-8">
-          <div className="border-t border-stone-200 dark:border-stone-800" />
+          <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* Currently */}
@@ -259,7 +259,7 @@ export default function Home() {
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200 dark:border-stone-800" />
+          <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* FAQ */}
@@ -287,7 +287,7 @@ export default function Home() {
         </section>
 
         <div className="px-8">
-          <div className="border-t border-stone-200 dark:border-stone-800" />
+          <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
         </div>
 
         {/* CTA */}
@@ -346,6 +346,12 @@ export default function Home() {
             >
               Twitter
             </a>
+            <Link
+              href="/design-hub"
+              className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
+            >
+              Design Hub
+            </Link>
             <span>© {new Date().getFullYear()}</span>
           </div>
         </div>

@@ -60,6 +60,9 @@ const Footer = () => (
         >
           Twitter
         </a>
+        <Link href="/design-hub" className="hover:text-stone-700 transition-colors dark:hover:text-stone-300">
+          Design Hub
+        </Link>
         <span>© {new Date().getFullYear()}</span>
       </div>
     </div>
@@ -72,11 +75,11 @@ export default function TermsPrivacy() {
       <Nav />
 
       <main className="flex-1 px-8 pt-32 pb-20 max-w-3xl">
-        <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
+        <p data-animate className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
           Legal
         </p>
 
-        <h1 className="text-3xl font-semibold tracking-tight text-stone-900 mb-16 dark:text-stone-100">
+        <h1 data-animate className="text-3xl font-semibold tracking-tight text-stone-900 mb-16 dark:text-stone-100">
           Terms and Conditions &amp; Privacy Policy
         </h1>
 

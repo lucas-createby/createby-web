@@ -2,11 +2,16 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "createby dev",
-      "runtimeExecutable": "/bin/zsh",
-      "runtimeArgs": ["-c", "export PATH=/usr/local/bin:/opt/homebrew/bin:$PATH && npm run dev"],
-      "port": 3000,
-      "autoPort": false
+      "name": "createby-web-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3005"],
+      "port": 3005
+    },
+    {
+      "name": "prototype",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3006", "-s", "."],
+      "port": 3006
     }
   ]
 }

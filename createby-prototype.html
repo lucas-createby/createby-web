@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>createby.no — Prototype v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── A: Fade + drift ── */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1), transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  }
+  [data-animate].in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── D: Nav solidification ── */
+  nav {
+    transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  nav.nav-solid {
+    background: rgba(237,230,210,.97);
+    border-bottom-color: rgba(37,48,37,.18);
+  }
+
+  /* ── Toggle ── */
+  #toggle-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    background: #253025;
+    color: #EDE6D2;
+    border: none;
+    padding: 10px 18px;
+    font-size: 11px;
+    font-family: Manrope, system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,.15);
+    transition: background .2s;
+  }
+  #toggle-bar:hover { background: #009CBC; }
+
+  /* ══════════════════════════════════
+     AFTER — proposed
+  ══════════════════════════════════ */
+  :root {
+    --bg:        #EDE6D2;
+    --surface:   #F5F4F0;
+    --surface2:  #EAEAE1;
+    --border:    rgba(37,48,37,.12);
+    --text:      #253025;
+    --muted:     #7E897E;
+    --teal:      #009CBC;
+    --plum:      #7E197A;
+    --amber:     #FFB401;
+    --font-head: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'Manrope', system-ui, sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(237,230,210,.88);
+    backdrop-filter: blur(14px);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 32px;
+  }
+  .nav-logo img.logo-light { display: block; height: 22px; width: auto; }
+  .nav-logo img.logo-dark  { display: none;  height: 22px; width: auto; filter: brightness(0) invert(1); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .15s;
+    letter-spacing: .01em;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  main { padding-top: 64px; }
+
+  /* Hero */
+  .hero {
+    padding: 80px 40px 72px;
+    background: var(--bg);
+  }
+  .hero h1 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -.025em;
+    color: var(--text);
+    margin-bottom: 28px;
+    max-width: 780px;
+  }
+  .hero p {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 540px;
+  }
+  .hero strong { color: var(--teal); font-weight: 500; }
+
+  /* Divider */
+  .divider { margin: 0 40px; border: none; border-top: 1px solid var(--border); }
+
+  /* Section label */
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 44px;
+  }
+
+  /* Services */
+  .services { padding: 72px 40px; background: var(--bg); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+  .service-card {
+    background: var(--surface);
+    padding: 36px 40px 40px;
+  }
+  .service-card:nth-child(odd) { background: var(--surface); }
+  .service-card:nth-child(even) { background: var(--surface2); }
+  .service-num {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .service-card:nth-child(1) .service-num { color: var(--plum); }
+  .service-card:nth-child(2) .service-num { color: var(--teal); }
+  .service-card:nth-child(3) .service-num { color: var(--amber); }
+  .service-card:nth-child(4) .service-num { color: var(--plum); }
+  .service-title {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -.01em;
+  }
+  .service-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* Selected work */
+  .work { padding: 72px 40px; background: var(--surface2); }
+  .work-row {
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+  .work-row:last-child { border-bottom: 1px solid var(--border); }
+  .work-client {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text);
+    letter-spacing: -.01em;
+  }
+  .work-title { color: var(--muted); font-weight: 400; }
+  .work-desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 8px;
+    max-width: 540px;
+  }
+  .work-meta {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: .04em;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  /* CTA */
+  .cta { padding: 96px 40px; background: var(--bg); }
+  .cta h2 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -.025em;
+    color: var(--text);
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  .cta p {
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .cta-btn:hover { background: #007a96; }
+
+  /* Footer */
+  footer {
+    padding: 28px 40px 40px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo img { height: 18px; width: auto; }
+  .footer-meta {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ══════════════════════════════════
+     BEFORE — current site
+  ══════════════════════════════════ */
+  body.before {
+    background: #fafaf9;
+    color: #1c1917;
+    --font-head: system-ui, -apple-system, sans-serif;
+    --font-body: system-ui, -apple-system, sans-serif;
+  }
+  body.before nav {
+    background: rgba(250,250,249,.7);
+    border-bottom-color: rgba(214,211,209,.6);
+  }
+  body.before .nav-logo img.logo-light { filter: none; }
+  body.before .nav-links a { color: #78716c; }
+  body.before .nav-links a:hover { color: #1c1917; }
+
+  body.before .hero { background: #fafaf9; }
+  body.before .hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 600; letter-spacing: -.02em; color: #1c1917; }
+  body.before .hero p { color: #78716c; }
+  body.before .hero strong { color: #1c1917; }
+
+  body.before .services { background: #fafaf9; }
+  body.before .services-grid { background: rgba(214,211,209,.4); }
+  body.before .service-card { background: rgba(255,255,255,.4) !important; }
+  body.before .service-num { color: #a8a29e !important; }
+  body.before .service-title { font-size: 15px; font-weight: 500; color: #1c1917; }
+  body.before .service-desc { color: #78716c; }
+
+  body.before .work { background: #fafaf9; }
+  body.before .work-row { border-top-color: rgba(214,211,209,.6); }
+  body.before .work-client { color: #1c1917; }
+  body.before .work-desc, body.before .work-meta, body.before .work-title { color: #78716c; }
+
+  body.before .cta { background: #fafaf9; }
+  body.before .cta h2 { color: #1c1917; }
+  body.before .cta p { color: #78716c; }
+  body.before .cta-btn { background: #1c1917; text-transform: none; letter-spacing: .02em; }
+  body.before .cta-btn:hover { background: #44403c; }
+
+  body.before footer { background: #fafaf9; border-top-color: rgba(214,211,209,.6); }
+  body.before .footer-meta, body.before .footer-links a { color: #a8a29e; }
+</style>
+</head>
+<body>
+
+<button id="toggle-bar" onclick="toggle()">← Before &nbsp;/&nbsp; After →</button>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img class="logo-light" src="http://localhost:3006/public/media/logo-wordmark.png" alt="create by™" />
+    <img class="logo-dark"  src="http://localhost:3006/public/media/logo-wordmark.png" alt="create by™" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Cases</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Design that moves organisations forward.</h1>
+    <p data-animate>Twenty years working at the intersection of design, strategy and technology. I help organisations figure out what to build, build the right thing, and make sure it <strong>actually gets used</strong>.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Services -->
+  <section class="services">
+    <p class="section-label" data-animate>What I do</p>
+    <div class="services-grid">
+      <div class="service-card" data-animate data-stagger="0">
+        <span class="service-num">01</span>
+        <h2 class="service-title">Innovation &amp; Product Strategy</h2>
+        <p class="service-desc">From unclear opportunity to clear direction. Design thinking and business strategy combined — to define what to build, why it matters, and how to test that assumption before committing.</p>
+      </div>
+      <div class="service-card" data-animate data-stagger="1">
+        <span class="service-num">02</span>
+        <h2 class="service-title">Service &amp; Business Design</h2>
+        <p class="service-desc">Research, journey mapping, service blueprinting and business model alignment — done with the people who will use and run the service, not just for them.</p>
+      </div>
+      <div class="service-card" data-animate data-stagger="2">
+        <span class="service-num">03</span>
+        <h2 class="service-title">User Experience &amp; Interaction Design</h2>
+        <p class="service-desc">Research-led, prototype-driven interface design. From first principles to high-fidelity — grounded in what people actually do, not just what they say they want.</p>
+      </div>
+      <div class="service-card" data-animate data-stagger="3">
+        <span class="service-num">04</span>
+        <h2 class="service-title">Product &amp; Design Leadership</h2>
+        <p class="service-desc">Embedded leadership for product and design teams. OKRs, design systems, cross-functional ways of working — built to outlast the engagement, not just the documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Work -->
+  <section class="work">
+    <p class="section-label" data-animate>Selected work</p>
+    <div class="work-row" data-animate data-stagger="0">
+      <div>
+        <div class="work-client">Posten Bring <span class="work-title">— HR Transformation</span></div>
+        <p class="work-desc">Service design and agile methodology applied to how a major Norwegian organisation manages its people processes.</p>
+      </div>
+      <div class="work-meta">2025<br/>Manyone</div>
+    </div>
+    <div class="work-row" data-animate data-stagger="1">
+      <div>
+        <div class="work-client">Domino's Norway <span class="work-title">— Digital Commerce</span></div>
+        <p class="work-desc">Redesigning the ordering experience to reduce friction and increase conversion. From discovery to high-fidelity testing.</p>
+      </div>
+      <div class="work-meta">2025<br/>Manyone</div>
+    </div>
+    <div class="work-row" data-animate data-stagger="2">
+      <div>
+        <div class="work-client">Faerch <span class="work-title">— Digital Transformation</span></div>
+        <p class="work-desc">Unified digital platform for a pan-European packaging leader merging multiple brands.</p>
+      </div>
+      <div class="work-meta">2024<br/>create by™</div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CTA -->
+  <section class="cta">
+    <p class="section-label" data-animate>Get in touch</p>
+    <h2 data-animate>Working on something worth building?</h2>
+    <p data-animate>Drop me a line and let's have a coffee.</p>
+    <a href="mailto:hello@createby.no" class="cta-btn" data-animate>Get in touch</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-logo">
+    <img src="http://localhost:3006/public/media/logo-wordmark.png" alt="create by™" />
+    <div class="footer-meta">Cueni AS — 932 292 793</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Privacy &amp; Terms</a></li>
+    <li><a href="#">LinkedIn</a></li>
+    <li><a href="#">© 2025</a></li>
+  </ul>
+</footer>
+
+<script>
+  let isBefore = false;
+  function toggle() {
+    isBefore = !isBefore;
+    document.body.classList.toggle('before', isBefore);
+    document.getElementById('toggle-bar').textContent = isBefore
+      ? '→ See After'
+      : '← Before / After →';
+  }
+
+  // A: Fade + drift on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const stagger = el.dataset.stagger;
+      if (stagger !== undefined) el.style.transitionDelay = `${parseInt(stagger) * 90}ms`;
+      el.classList.add('in-view');
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+  // D: Nav solidification
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('nav-solid', window.scrollY > 24);
+  }, { passive: true });
+</script>
+</body>
+</html>

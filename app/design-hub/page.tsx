@@ -71,6 +71,48 @@ export default function DesignHub() {
           </p>
         </div>
 
+        {/* Brand Assets */}
+        <section className="mb-16">
+          <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-6">Brand Assets</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <div className="h-20 bg-white border border-stone-200 dark:border-stone-800 flex items-center justify-center mb-2 rounded-sm">
+                <img src="/media/favicon-light.png" alt="Favicon light" className="h-8 w-auto" />
+              </div>
+              <p className="text-xs font-medium text-stone-600 dark:text-stone-400">Favicon — Light</p>
+              <p className="text-xs text-stone-400 font-mono">64 × 64</p>
+            </div>
+            <div>
+              <div className="h-20 bg-stone-900 border border-stone-800 flex items-center justify-center mb-2 rounded-sm">
+                <img src="/media/favicon-dark.png" alt="Favicon dark" className="h-8 w-auto" />
+              </div>
+              <p className="text-xs font-medium text-stone-600 dark:text-stone-400">Favicon — Dark</p>
+              <p className="text-xs text-stone-400 font-mono">64 × 64</p>
+            </div>
+            <div>
+              <div className="h-20 bg-white border border-stone-200 dark:border-stone-800 flex items-center justify-center mb-2 rounded-sm px-4">
+                <img src="/media/logo-wordmark.png" alt="Logo wordmark" className="h-6 w-auto" />
+              </div>
+              <p className="text-xs font-medium text-stone-600 dark:text-stone-400">Wordmark</p>
+              <p className="text-xs text-stone-400 font-mono">109 × 20</p>
+            </div>
+            <div>
+              <div className="h-20 bg-white border border-stone-200 dark:border-stone-800 flex items-center justify-center mb-2 rounded-sm">
+                <img src="/media/apple-touch-icon.png" alt="Apple touch icon" className="h-12 w-auto rounded" />
+              </div>
+              <p className="text-xs font-medium text-stone-600 dark:text-stone-400">Apple Touch Icon</p>
+              <p className="text-xs text-stone-400 font-mono">180 × 180</p>
+            </div>
+          </div>
+          <div className="mt-4">
+            <div className="border border-stone-200 dark:border-stone-800 rounded-sm overflow-hidden">
+              <img src="/media/og-image.png" alt="OG social preview" className="w-full h-auto" />
+            </div>
+            <p className="text-xs font-medium text-stone-600 dark:text-stone-400 mt-2">OG / Social Preview</p>
+            <p className="text-xs text-stone-400 font-mono">1200 × 630</p>
+          </div>
+        </section>
+
         {/* Colors */}
         <section className="mb-16">
           <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-6">Colours</h2>
@@ -153,7 +195,10 @@ export default function DesignHub() {
       <footer className="px-8 pt-8 pb-20 border-t border-stone-200 dark:border-stone-800">
         <div className="flex items-center justify-between text-xs text-stone-400 dark:text-stone-600">
           <span><strong className="text-stone-600 dark:text-stone-400">create by™</strong> — Design Hub</span>
-          <Link href="/" className="hover:text-stone-700 transition-colors dark:hover:text-stone-300">← Back to site</Link>
+          <div className="flex items-center gap-4">
+            <Link href="/" className="hover:text-stone-700 transition-colors dark:hover:text-stone-300">← Back to site</Link>
+            <span>© {new Date().getFullYear()}</span>
+          </div>
         </div>
       </footer>
     </div>

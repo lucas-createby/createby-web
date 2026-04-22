@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 export default function ScrollAnimations() {
   useEffect(() => {
+    // A + C: Fade/drift + stagger
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -18,10 +19,22 @@ export default function ScrollAnimations() {
       },
       { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
     );
+    document.querySelectorAll('[data-animate], [data-animate-left]').forEach((el) => observer.observe(el));
 
-    document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
+    // B: Line draw
+    const lineObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('in-view');
+          lineObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0, rootMargin: '0px 0px -10px 0px' }
+    );
+    document.querySelectorAll('[data-animate-line]').forEach((el) => lineObserver.observe(el));
 
-    // Nav solidification on scroll
+    // D: Nav solidification
     const nav = document.querySelector('nav');
     const onScroll = () => {
       if (nav) nav.classList.toggle('nav-solid', window.scrollY > 24);
@@ -31,6 +44,7 @@ export default function ScrollAnimations() {
 
     return () => {
       observer.disconnect();
+      lineObserver.disconnect();
       window.removeEventListener('scroll', onScroll);
     };
   }, []);
