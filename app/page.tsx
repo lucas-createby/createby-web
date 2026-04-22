@@ -144,7 +144,7 @@ export default function Home() {
           <HeroCanvas />
           <div className="relative z-10 max-w-4xl">
             <AnimatedHeroText />
-            <p className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed dark:text-stone-400">
+            <p data-animate className="text-lg md:text-xl text-stone-500 max-w-2xl leading-relaxed dark:text-stone-400">
               Twenty years working at the intersection of design, strategy and
               technology. I help organisations figure out what to build, build
               the right thing, and make sure it actually gets used. Currently
@@ -160,13 +160,15 @@ export default function Home() {
 
         {/* Services */}
         <section className="px-8 py-20">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
+          <p data-animate className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
             What I do
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200/60 dark:bg-stone-800/60">
-            {services.map((s) => (
+            {services.map((s, i) => (
               <div
                 key={s.number}
+                data-animate
+                data-stagger={i}
                 className={`bg-white/40 backdrop-blur-sm p-8 md:p-10 dark:bg-transparent dark:backdrop-blur-none${s.wide ? " md:col-span-2" : ""}`}
               >
                 <span className="text-xs text-stone-400 mb-4 block dark:text-stone-600">
@@ -189,12 +191,12 @@ export default function Home() {
 
         {/* Selected Work */}
         <section className="px-8 py-20">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
+          <p data-animate className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
             Selected work
           </p>
           <div className="divide-y divide-stone-200 dark:divide-stone-800">
-            {work.map((w) => (
-              <div key={w.client} className="py-8 md:py-10">
+            {work.map((w, i) => (
+              <div key={w.client} data-animate data-stagger={i} className="py-8 md:py-10">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
                   <h2 className="text-base font-medium text-stone-900 dark:text-stone-100">
                     {w.client}{" "}
@@ -290,13 +292,13 @@ export default function Home() {
 
         {/* CTA */}
         <section className="px-8 py-24 md:py-32">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-6 dark:text-stone-600">
+          <p data-animate className="text-xs uppercase tracking-widest text-stone-400 mb-6 dark:text-stone-600">
             Get in touch
           </p>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-8 max-w-2xl leading-tight dark:text-stone-100">
+          <h2 data-animate className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-8 max-w-2xl leading-tight dark:text-stone-100">
             Working on something worth building?
           </h2>
-          <p className="text-stone-500 mb-10 text-lg dark:text-stone-400">
+          <p data-animate className="text-stone-500 mb-10 text-lg dark:text-stone-400">
             Drop me a line and let&apos;s have a coffee.
           </p>
           <a

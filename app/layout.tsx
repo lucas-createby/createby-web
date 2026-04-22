@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
 import Script from "next/script";
 import BackgroundGradient from "@/components/BackgroundGradient";
 import ThemeToggle from "@/components/ThemeToggle";
+import ScrollAnimations from "@/components/ScrollAnimations";
 import "./globals.css";
 
 const GA_ID = "G-C00GCWS23J";
@@ -69,6 +70,7 @@ export default function RootLayout({
         <BackgroundGradient />
         {children}
         <ThemeToggle />
+        <ScrollAnimations />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
         <Script id="ga4" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];
