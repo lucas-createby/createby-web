@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
+import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import Script from "next/script";
 import BackgroundGradient from "@/components/BackgroundGradient";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -8,7 +8,7 @@ import "./globals.css";
 
 const GA_ID = "G-C00GCWS23J";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -57,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} ${manrope.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${bricolageGrotesque.variable} ${manrope.variable} h-full`} suppressHydrationWarning>
       <head>
         {/* Set theme + enable JS-gated animation hidden states before paint.
             If this inline script fails for any reason, .js is never added

@@ -5,6 +5,12 @@
 :root {
   --background: #fafaf9;
   --foreground: #1c1917;
+  --accent: #7E197A;    /* Plum — light mode */
+  --accent-2: #009CBC;  /* Teal — link color */
+}
+
+html.dark {
+  --accent: #FFB401;    /* Amber — dark mode */
 }
 
 @theme inline {
