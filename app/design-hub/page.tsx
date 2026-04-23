@@ -34,7 +34,7 @@ const typeScale = [
 const prototypes = [
   {
     title: "v2 — Font + Colour Direction",
-    description: "Plus Jakarta Sans + Manrope, full Framer palette, before/after toggle.",
+    description: "Plus Jakarta Sans + Manrope, full palette, before/after toggle.",
     href: "http://localhost:3006/createby-prototype.html",
     date: "Apr 2026",
     status: "In review",
