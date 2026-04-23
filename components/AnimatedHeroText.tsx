@@ -93,12 +93,12 @@ export default function AnimatedHeroText() {
   const yWord = useScramble(Y_WORDS[yIdx])
 
   return (
-    <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-stone-900 dark:text-stone-100 mb-8">
+    <h1 className="font-sans text-4xl md:text-6xl font-semibold tracking-[-0.035em] leading-[1.02] text-stone-900 dark:text-stone-100 mb-8">
       create{' '}
-      <span className="text-stone-400 dark:text-stone-500 tabular-nums">{xWord}</span>
+      <em className="font-display italic font-normal tracking-[-0.02em] text-[var(--accent)] tabular-nums not-italic-fallback">{xWord}</em>
       <br />
       by{' '}
-      <span className="text-stone-400 dark:text-stone-500 tabular-nums">{yWord}</span>
+      <em className="font-display italic font-normal tracking-[-0.02em] text-[var(--accent)] tabular-nums">{yWord}</em>
     </h1>
   )
 }
