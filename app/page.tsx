@@ -2,6 +2,8 @@ import Link from "next/link";
 import HeroCanvas from "@/components/HeroCanvas";
 import LogoTicker from "@/components/LogoTicker";
 import AnimatedHeroText from "@/components/AnimatedHeroText";
+import Manifesto from "@/components/Manifesto";
+import Writing from "@/components/Writing";
 
 const services = [
   {
@@ -191,9 +193,8 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="px-8">
-          <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
-        </div>
+        {/* Manifesto */}
+        <Manifesto />
 
         {/* Selected Work */}
         <section className="px-8 py-20">
@@ -227,6 +228,13 @@ export default function Home() {
             More on LinkedIn
           </a>
         </section>
+
+        <div className="px-8">
+          <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
+        </div>
+
+        {/* Writing */}
+        <Writing />
 
         <div className="px-8">
           <div data-animate-line className="border-t border-stone-200 dark:border-stone-800" />
