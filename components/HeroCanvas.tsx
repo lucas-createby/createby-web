@@ -56,7 +56,25 @@ interface Point {
   cx: number; cy: number; cvx: number; cvy: number
 }
 
-export default function HeroCanvas() {
+interface HeroCanvasProps {
+  xGap?: number
+  yGap?: number
+  ampX?: number
+  ampY?: number
+  opacityLight?: number
+  opacityDark?: number
+  influenceRadius?: number
+}
+
+export default function HeroCanvas({
+  xGap = 27,
+  yGap = 10,
+  ampX = 12,
+  ampY = 6,
+  opacityLight = 0.12,
+  opacityDark = 0.15,
+  influenceRadius = 175,
+}: HeroCanvasProps = {}) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
 
@@ -66,8 +84,6 @@ export default function HeroCanvas() {
     if (!wrapper || !svg) return
 
     const noise = createNoise2D(42)
-    const xGap = 27
-    const yGap = 10
 
     const mouse = { x: 0, y: 0, sx: 0, sy: 0, vs: 0 }
     let points: Point[][] = []
@@ -116,7 +132,7 @@ export default function HeroCanvas() {
       const time = performance.now()
       const speedMult = 0.001
       const ampMult = 1.0
-      const l = 175
+      const l = influenceRadius
 
       for (let li = 0; li < points.length; li++) {
         const line = points[li]
@@ -127,8 +143,8 @@ export default function HeroCanvas() {
           // Wave
           const base = noise(p.x * 0.003, p.y * 0.002) * 8
           const move = base + time * speedMult
-          p.wx = Math.cos(move) * 12 * ampMult
-          p.wy = Math.sin(move) * 6 * ampMult
+          p.wx = Math.cos(move) * ampX * ampMult
+          p.wy = Math.sin(move) * ampY * ampMult
 
           // Mouse spring
           const dx = p.x - mouse.sx
@@ -157,7 +173,7 @@ export default function HeroCanvas() {
         }
         const dark = document.documentElement.classList.contains('dark')
         paths[li].setAttribute('stroke', dark ? '#ffffff' : '#1c1917')
-        paths[li].setAttribute('stroke-opacity', dark ? '0.15' : '0.12')
+        paths[li].setAttribute('stroke-opacity', String(dark ? opacityDark : opacityLight))
         paths[li].setAttribute('d', d)
       }
 
@@ -194,7 +210,7 @@ export default function HeroCanvas() {
       ro.disconnect()
       wrapper.removeEventListener('mousemove', onMouseMove)
     }
-  }, [])
+  }, [xGap, yGap, ampX, ampY, opacityLight, opacityDark, influenceRadius])
 
   return (
     <div ref={wrapperRef} className="absolute inset-0">

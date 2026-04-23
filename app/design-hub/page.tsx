@@ -41,7 +41,7 @@ const prototypes = [
   },
 ];
 
-type Demo = { class: string; name: string; desc: string; demo: React.ReactNode };
+type Demo = { class: string; name: string; desc: string; demo: React.ReactNode; bleed?: boolean };
 
 const FadeDemo = () => (
   <div className="dh-fade text-sm font-medium text-stone-900 dark:text-stone-100">
@@ -78,9 +78,17 @@ const SolidDemo = () => (
 );
 
 const LinesInteractionDemo = () => (
-  <div className="relative w-full h-full overflow-hidden bg-stone-900 rounded-sm">
-    <HeroCanvas />
-    <span className="absolute bottom-1 right-1.5 text-[9px] font-mono text-stone-500 pointer-events-none">hover</span>
+  <div className="relative w-full h-full overflow-hidden bg-stone-900">
+    <HeroCanvas
+      xGap={14}
+      yGap={6}
+      ampX={6}
+      ampY={3}
+      opacityDark={0.45}
+      opacityLight={0.45}
+      influenceRadius={70}
+    />
+    <span className="absolute bottom-1 right-1.5 text-[9px] font-mono text-stone-400 pointer-events-none z-10">hover</span>
   </div>
 );
 
@@ -132,6 +140,7 @@ const animations: Demo[] = [
     name: "Lines interaction",
     desc: "Cursor-reactive flow field. Noise-driven SVG paths follow the mouse with a spring; dampens to idle waves.",
     demo: <LinesInteractionDemo />,
+    bleed: true,
   },
   {
     class: "G",
@@ -238,7 +247,7 @@ export default function DesignHub() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-stone-200/60 dark:bg-stone-800/60">
             {animations.map((a) => (
               <div key={a.name} className="bg-white/40 dark:bg-transparent p-6 flex flex-col">
-                <div className="h-20 flex items-center justify-start mb-5 px-4 border border-dashed border-stone-200 dark:border-stone-800 rounded-sm bg-stone-50/60 dark:bg-stone-900/30">
+                <div className={`h-20 mb-5 border border-dashed border-stone-200 dark:border-stone-800 rounded-sm bg-stone-50/60 dark:bg-stone-900/30 ${a.bleed ? "overflow-hidden" : "flex items-center justify-start px-4"}`}>
                   {a.demo}
                 </div>
                 <span className="text-xs font-mono font-semibold text-stone-400 dark:text-stone-600 mb-2 block">{a.class}</span>
