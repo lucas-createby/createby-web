@@ -142,11 +142,14 @@ html.dark .dh-solid-bar {
   backdrop-filter: blur(8px);
 }
 
-.dh-hero-accent { color: inherit; font-style: normal; font-weight: 500; }
-.dh-hero:hover .dh-hero-accent {
-  font-style: italic;
-  color: #aa5b04;
-  font-family: "Times New Roman", Georgia, serif;
+@keyframes dh-slide-left-loop {
+  0%, 8%   { opacity: 0; transform: translateX(-12px); }
+  35%, 75% { opacity: 1; transform: translateX(0); }
+  100%     { opacity: 0; transform: translateX(-12px); }
+}
+.dh-slide-left {
+  opacity: 0;
+  animation: dh-slide-left-loop 3.2s cubic-bezier(0.4,0,0.2,1) infinite;
 }
 
 /* ── Nav solidification ── */

@@ -76,11 +76,11 @@ export default function About() {
       <Nav />
 
       <main className="flex-1 px-8 pt-32 pb-20 max-w-3xl">
-        <p data-animate className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
+        <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
           About
         </p>
 
-        <h1 data-animate className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-10 leading-tight dark:text-stone-100">
+        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-10 leading-tight dark:text-stone-100">
           My name is Lucas Cueni.
         </h1>
 
@@ -145,7 +145,7 @@ export default function About() {
           </p>
         </div>
 
-        <div data-animate className="mt-16 pt-10 border-t border-stone-200 dark:border-stone-800">
+        <div className="mt-16 pt-10 border-t border-stone-200 dark:border-stone-800">
           <p className="text-stone-500 mb-6 dark:text-stone-400">
             Working on something worth building? Drop me a line and let&apos;s
             have a coffee.

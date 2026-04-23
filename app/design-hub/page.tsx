@@ -75,14 +75,16 @@ const SolidDemo = () => (
   </div>
 );
 
-const HeroDemo = () => (
-  <p className="dh-hero text-base font-medium text-stone-900 dark:text-stone-100 cursor-default select-none">
-    design that{" "}
-    <span className="dh-hero-accent transition-all duration-[240ms] ease-out">
-      moves
-    </span>{" "}
-    forward
-  </p>
+const SlideLeftDemo = () => (
+  <div className="flex flex-col gap-1.5 w-full max-w-[160px]">
+    {[0, 1, 2].map((i) => (
+      <div
+        key={i}
+        className="dh-slide-left h-2 rounded-sm bg-stone-900/80 dark:bg-stone-100/80"
+        style={{ animationDelay: `${i * 90}ms`, width: `${100 - i * 18}%` }}
+      />
+    ))}
+  </div>
 );
 
 const animations: Demo[] = [
@@ -112,9 +114,9 @@ const animations: Demo[] = [
   },
   {
     class: "E",
-    name: "Hero interaction",
-    desc: "Accent word shifts to italic serif on hover. Weight + colour transition, 240ms ease-out.",
-    demo: <HeroDemo />,
+    name: "Slide from left",
+    desc: "Work rows slide in 12px from the left with 90ms stagger between items. 0.5s cubic-bezier.",
+    demo: <SlideLeftDemo />,
   },
 ];
 
