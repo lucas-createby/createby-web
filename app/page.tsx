@@ -163,21 +163,27 @@ export default function Home() {
           <p data-animate className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-12">
             What I do
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200/60 dark:bg-stone-800/60">
+          <div className="grid grid-cols-1 md:grid-cols-2 border-t border-stone-200 dark:border-stone-800">
             {services.map((s, i) => (
               <div
                 key={s.number}
                 data-animate
                 data-stagger={i}
-                className={`bg-white/40 backdrop-blur-sm p-8 md:p-10 dark:bg-transparent dark:backdrop-blur-none${s.wide ? " md:col-span-2" : ""}`}
+                className={`flex flex-col py-10 md:py-12 border-b border-stone-200 dark:border-stone-800${
+                  s.wide
+                    ? " md:col-span-2 md:pr-0"
+                    : i % 2 === 0
+                      ? " md:pr-10"
+                      : " md:pl-10 md:border-l md:border-stone-200 md:dark:border-stone-800"
+                }`}
               >
                 <span className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-4 block">
                   {s.number}
                 </span>
-                <h2 className="text-lg font-medium text-stone-900 mb-3 leading-snug dark:text-stone-100">
+                <h2 className="text-2xl md:text-3xl font-normal tracking-tight text-stone-900 mb-4 leading-[1.2] max-w-[20ch] dark:text-stone-100">
                   {s.title}
                 </h2>
-                <p className={`text-sm text-stone-500 leading-relaxed dark:text-stone-400${s.wide ? " max-w-2xl" : ""}`}>
+                <p className={`text-sm text-stone-500 leading-relaxed dark:text-stone-400 ${s.wide ? "max-w-3xl" : "max-w-[42ch]"}`}>
                   {s.description}
                 </p>
               </div>
