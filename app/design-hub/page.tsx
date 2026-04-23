@@ -78,7 +78,7 @@ const SolidDemo = () => (
 );
 
 const LinesInteractionDemo = () => (
-  <div className="relative w-full h-full overflow-hidden bg-stone-900">
+  <div className="relative w-full h-full overflow-hidden bg-stone-100 dark:bg-stone-900">
     <HeroCanvas
       xGap={14}
       yGap={6}
