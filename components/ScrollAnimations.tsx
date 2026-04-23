@@ -3,9 +3,19 @@ import { useEffect } from 'react';
 
 export default function ScrollAnimations() {
   useEffect(() => {
-    // Safety fallback: if JS runs but observer misbehaves (reduced-motion,
-    // hydration race, etc.), reveal all animated content after 1.5s so the
-    // page can never be left blank.
+    // On client navigation Next.js can preserve scroll position. Anything
+    // already at-or-above the viewport on mount must be revealed immediately
+    // (no fade), otherwise content scrolled past stays invisible.
+    const revealIfAboveOrInView = (el: Element) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.95) {
+        el.classList.add('in-view');
+        return true;
+      }
+      return false;
+    };
+
+    // Safety fallback: never let content stay blank.
     const fallback = window.setTimeout(() => {
       document
         .querySelectorAll('[data-animate]:not(.in-view), [data-animate-left]:not(.in-view), [data-animate-line]:not(.in-view)')
@@ -28,7 +38,10 @@ export default function ScrollAnimations() {
       },
       { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
     );
-    document.querySelectorAll('[data-animate], [data-animate-left]').forEach((el) => observer.observe(el));
+    document.querySelectorAll('[data-animate], [data-animate-left]').forEach((el) => {
+      if (revealIfAboveOrInView(el)) return;
+      observer.observe(el);
+    });
 
     // B: Line draw
     const lineObserver = new IntersectionObserver(
@@ -41,7 +54,10 @@ export default function ScrollAnimations() {
       },
       { threshold: 0, rootMargin: '0px 0px -10px 0px' }
     );
-    document.querySelectorAll('[data-animate-line]').forEach((el) => lineObserver.observe(el));
+    document.querySelectorAll('[data-animate-line]').forEach((el) => {
+      if (revealIfAboveOrInView(el)) return;
+      lineObserver.observe(el);
+    });
 
     // D: Nav solidification
     const nav = document.querySelector('nav');
