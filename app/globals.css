@@ -53,14 +53,23 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Scroll animations ──
    Hidden states only apply when JS has enabled them (.js on <html>).
-   No JS → no hidden state → content always visible. */
+   No JS → no hidden state → content always visible.
+   CSS keyframe fallback at 2s force-reveals the element regardless of
+   whether the IntersectionObserver fires — if it does fire and adds
+   .in-view, the animation is cancelled and the transition takes over. */
+@keyframes reveal-fade   { to { opacity: 1; transform: translateY(0); } }
+@keyframes reveal-line   { to { transform: scaleX(1); } }
+@keyframes reveal-left   { to { opacity: 1; transform: translateX(0); } }
+
 .js [data-animate] {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1),
               transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  animation: reveal-fade 0.55s cubic-bezier(0.4,0,0.2,1) 2s forwards;
 }
 .js [data-animate].in-view {
+  animation: none;
   opacity: 1;
   transform: translateY(0);
 }
@@ -70,8 +79,10 @@ h1, h2, h3, h4, h5, h6 {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  animation: reveal-line 0.7s cubic-bezier(0.4,0,0.2,1) 2s forwards;
 }
 .js [data-animate-line].in-view {
+  animation: none;
   transform: scaleX(1);
 }
 
@@ -81,8 +92,10 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-12px);
   transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
               transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  animation: reveal-left 0.5s cubic-bezier(0.4,0,0.2,1) 2s forwards;
 }
 .js [data-animate-left].in-view {
+  animation: none;
   opacity: 1;
   transform: translateX(0);
 }

@@ -1,7 +1,9 @@
 'use client';
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function ScrollAnimations() {
+  const pathname = usePathname();
   useEffect(() => {
     // On client navigation Next.js can preserve scroll position. Anything
     // already at-or-above the viewport on mount must be revealed immediately
@@ -73,7 +75,7 @@ export default function ScrollAnimations() {
       lineObserver.disconnect();
       window.removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
