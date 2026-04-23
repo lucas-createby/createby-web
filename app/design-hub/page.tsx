@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import HeroCanvas from "@/components/HeroCanvas";
+import MiniScrambleDemo from "@/components/MiniScrambleDemo";
 
 export const metadata: Metadata = {
   title: "Design Hub | create by™",
@@ -75,6 +77,13 @@ const SolidDemo = () => (
   </div>
 );
 
+const LinesInteractionDemo = () => (
+  <div className="relative w-full h-full overflow-hidden bg-stone-900 rounded-sm">
+    <HeroCanvas />
+    <span className="absolute bottom-1 right-1.5 text-[9px] font-mono text-stone-500 pointer-events-none">hover</span>
+  </div>
+);
+
 const SlideLeftDemo = () => (
   <div className="flex flex-col gap-1.5 w-full max-w-[160px]">
     {[0, 1, 2].map((i) => (
@@ -117,6 +126,18 @@ const animations: Demo[] = [
     name: "Slide from left",
     desc: "Work rows slide in 12px from the left with 90ms stagger between items. 0.5s cubic-bezier.",
     demo: <SlideLeftDemo />,
+  },
+  {
+    class: "F",
+    name: "Lines interaction",
+    desc: "Cursor-reactive flow field. Noise-driven SVG paths follow the mouse with a spring; dampens to idle waves.",
+    demo: <LinesInteractionDemo />,
+  },
+  {
+    class: "G",
+    name: "Word scramble",
+    desc: "Hero headline cycles through word pairs with a per-character scramble (~550ms). Re-fires on a 3.2s + 4.7s interval.",
+    demo: <MiniScrambleDemo />,
   },
 ];
 
