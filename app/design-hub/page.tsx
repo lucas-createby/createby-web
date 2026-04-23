@@ -39,11 +39,83 @@ const prototypes = [
   },
 ];
 
-const animations = [
-  { name: "Fade + drift", class: "A", desc: "Content fades up 18px on scroll enter. 0.55s cubic-bezier." },
-  { name: "Stagger", class: "C", desc: "Grid/list children enter with 90ms delay between each item." },
-  { name: "Nav solidify", class: "D", desc: "Nav backdrop opacifies as user scrolls past 24px." },
-  { name: "Hero interaction", class: "E", desc: "Accent word in hero shifts to italic serif on cursor proximity. Subtle weight + colour transition, 240ms ease-out." },
+type Demo = { class: string; name: string; desc: string; demo: React.ReactNode };
+
+const FadeDemo = () => (
+  <div className="dh-fade text-sm font-medium text-stone-900 dark:text-stone-100">
+    Hello there →
+  </div>
+);
+
+const LineDemo = () => (
+  <div className="w-full max-w-[140px]">
+    <div className="dh-line h-px bg-stone-900 dark:bg-stone-100" />
+  </div>
+);
+
+const StaggerDemo = () => (
+  <div className="flex items-center gap-2">
+    {[0, 1, 2, 3].map((i) => (
+      <span
+        key={i}
+        className="dh-stagger-item h-2 w-2 rounded-full bg-stone-900 dark:bg-stone-100"
+        style={{ animationDelay: `${i * 90}ms` }}
+      />
+    ))}
+  </div>
+);
+
+const SolidDemo = () => (
+  <div className="w-full max-w-[160px] rounded-sm overflow-hidden border border-stone-200/60 dark:border-stone-800/60">
+    <div className="dh-solid-bar h-7 px-2 flex items-center justify-between">
+      <span className="text-[9px] font-medium text-stone-700 dark:text-stone-200">create by™</span>
+      <span className="text-[9px] text-stone-500 dark:text-stone-400">about</span>
+    </div>
+    <div className="h-7 bg-stone-100/50 dark:bg-stone-900/40" />
+  </div>
+);
+
+const HeroDemo = () => (
+  <p className="dh-hero text-base font-medium text-stone-900 dark:text-stone-100 cursor-default select-none">
+    design that{" "}
+    <span className="dh-hero-accent transition-all duration-[240ms] ease-out">
+      moves
+    </span>{" "}
+    forward
+  </p>
+);
+
+const animations: Demo[] = [
+  {
+    class: "A",
+    name: "Fade + drift",
+    desc: "Content fades up 18px on scroll enter. 0.55s cubic-bezier.",
+    demo: <FadeDemo />,
+  },
+  {
+    class: "B",
+    name: "Line draw",
+    desc: "Dividers scale from 0 → 1 left-to-right as they enter. 0.7s cubic-bezier.",
+    demo: <LineDemo />,
+  },
+  {
+    class: "C",
+    name: "Stagger",
+    desc: "Grid/list children enter with 90ms delay between each item.",
+    demo: <StaggerDemo />,
+  },
+  {
+    class: "D",
+    name: "Nav solidify",
+    desc: "Nav backdrop opacifies as user scrolls past 24px.",
+    demo: <SolidDemo />,
+  },
+  {
+    class: "E",
+    name: "Hero interaction",
+    desc: "Accent word shifts to italic serif on hover. Weight + colour transition, 240ms ease-out.",
+    demo: <HeroDemo />,
+  },
 ];
 
 export default function DesignHub() {
@@ -142,8 +214,11 @@ export default function DesignHub() {
           <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-6">Animations</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-stone-200/60 dark:bg-stone-800/60">
             {animations.map((a) => (
-              <div key={a.name} className="bg-white/40 dark:bg-transparent p-6">
-                <span className="text-xs font-mono font-semibold text-stone-400 dark:text-stone-600 mb-3 block">{a.class}</span>
+              <div key={a.name} className="bg-white/40 dark:bg-transparent p-6 flex flex-col">
+                <div className="h-20 flex items-center justify-start mb-5 px-4 border border-dashed border-stone-200 dark:border-stone-800 rounded-sm bg-stone-50/60 dark:bg-stone-900/30">
+                  {a.demo}
+                </div>
+                <span className="text-xs font-mono font-semibold text-stone-400 dark:text-stone-600 mb-2 block">{a.class}</span>
                 <p className="text-sm font-medium text-stone-900 dark:text-stone-100 mb-1">{a.name}</p>
                 <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">{a.desc}</p>
               </div>
