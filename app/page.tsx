@@ -160,7 +160,7 @@ export default function Home() {
 
         {/* Services */}
         <section className="px-8 py-20">
-          <p data-animate className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
+          <p data-animate className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-12">
             What I do
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 border-t border-stone-200 dark:border-stone-800">
@@ -177,7 +177,7 @@ export default function Home() {
                       : " md:pl-10 md:border-l md:border-stone-200 md:dark:border-stone-800"
                 }`}
               >
-                <span className="text-xs uppercase tracking-widest text-stone-400 font-medium mb-4 block dark:text-stone-600">
+                <span className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-4 block">
                   {s.number}
                 </span>
                 <h2 className="text-2xl md:text-3xl font-normal tracking-tight text-stone-900 mb-4 leading-[1.2] max-w-[20ch] dark:text-stone-100">
@@ -197,7 +197,7 @@ export default function Home() {
 
         {/* Selected Work */}
         <section className="px-8 py-20">
-          <p data-animate className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
+          <p data-animate className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-12">
             Selected work
           </p>
           <div className="divide-y divide-stone-200 dark:divide-stone-800">
@@ -241,7 +241,7 @@ export default function Home() {
 
         {/* Currently */}
         <section className="px-8 py-20 max-w-3xl">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-10 dark:text-stone-600">
+          <p className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-10">
             Currently
           </p>
           <div className="space-y-6 text-stone-500 text-base leading-relaxed dark:text-stone-400">
@@ -270,7 +270,7 @@ export default function Home() {
 
         {/* FAQ */}
         <section className="px-8 py-20 max-w-3xl">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
+          <p className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-12">
             Frequently asked
           </p>
           <div className="divide-y divide-stone-200 dark:divide-stone-800">
@@ -298,7 +298,7 @@ export default function Home() {
 
         {/* CTA */}
         <section className="px-8 py-24 md:py-32">
-          <p data-animate className="text-xs uppercase tracking-widest text-stone-400 mb-6 dark:text-stone-600">
+          <p data-animate className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-6">
             Get in touch
           </p>
           <h2 data-animate className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-8 max-w-2xl leading-tight dark:text-stone-100">
@@ -309,9 +309,9 @@ export default function Home() {
           </p>
           <a
             href="mailto:hello@createby.no"
-            className="inline-block bg-stone-900 text-white text-sm font-medium px-6 py-3 hover:bg-stone-700 transition-colors dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300"
+            className="inline-flex items-center gap-2 bg-[var(--accent)] text-white dark:text-stone-900 text-sm font-semibold px-6 py-4 hover:brightness-110 transition-[filter,transform] hover:-translate-y-px"
           >
-            Get in touch
+            Get in touch <span aria-hidden="true">→</span>
           </a>
         </section>
       </main>
