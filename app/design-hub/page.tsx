@@ -31,16 +31,6 @@ const typeScale = [
   { label: "Label", size: "text-xs", weight: "font-medium", font: "font-[family-name:var(--font-body)]", sample: "WHAT I DO — SELECTED WORK — GET IN TOUCH" },
 ];
 
-const prototypes = [
-  {
-    title: "v2 — Font + Colour Direction",
-    description: "Plus Jakarta Sans + Manrope, full palette, before/after toggle.",
-    href: "http://localhost:3006/createby-prototype.html",
-    date: "Apr 2026",
-    status: "In review",
-  },
-];
-
 type Demo = { class: string; name: string; desc: string; demo: React.ReactNode; bleed?: boolean };
 
 const FadeDemo = () => (
@@ -169,7 +159,7 @@ export default function DesignHub() {
 
         {/* Header */}
         <div className="mb-16 border-b border-stone-200 dark:border-stone-800 pb-10">
-          <p className="text-xs uppercase tracking-widest text-stone-400 mb-3 dark:text-stone-600">Internal</p>
+          <p className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-3">Internal</p>
           <h1 className="text-4xl font-bold tracking-tight text-stone-900 dark:text-stone-100 mb-3">Design Hub</h1>
           <p className="text-stone-500 dark:text-stone-400 text-base max-w-xl">
             Design system, prototypes and visual references for create by™.
@@ -178,7 +168,7 @@ export default function DesignHub() {
 
         {/* Brand Assets */}
         <section className="mb-16">
-          <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-6">Brand Assets</h2>
+          <h2 className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-6">Brand Assets</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div>
               <div className="h-20 bg-white border border-stone-200 dark:border-stone-800 flex items-center justify-center mb-2 rounded-sm">
@@ -206,7 +196,7 @@ export default function DesignHub() {
 
         {/* Colors */}
         <section className="mb-16">
-          <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-6">Colours</h2>
+          <h2 className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-6">Colours</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {colors.map((c) => (
               <div key={c.token}>
@@ -224,7 +214,7 @@ export default function DesignHub() {
 
         {/* Typography */}
         <section className="mb-16 border-t border-stone-200 dark:border-stone-800 pt-12">
-          <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-8">Typography</h2>
+          <h2 className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-8">Typography</h2>
           <div className="space-y-8">
             {typeScale.map((t) => (
               <div key={t.label} className="flex items-baseline gap-6 border-b border-stone-100 dark:border-stone-900 pb-6">
@@ -236,14 +226,14 @@ export default function DesignHub() {
             ))}
           </div>
           <div className="mt-6 flex gap-8 text-sm text-stone-500 dark:text-stone-400">
-            <span><strong className="text-stone-700 dark:text-stone-300">Display / Headings:</strong> Plus Jakarta Sans</span>
+            <span><strong className="text-stone-700 dark:text-stone-300">Display / Headings:</strong> Bricolage Grotesque</span>
             <span><strong className="text-stone-700 dark:text-stone-300">Body / UI:</strong> Manrope</span>
           </div>
         </section>
 
         {/* Animations */}
         <section className="mb-16 border-t border-stone-200 dark:border-stone-800 pt-12">
-          <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-6">Animations</h2>
+          <h2 className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-6">Animations</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-stone-200/60 dark:bg-stone-800/60">
             {animations.map((a) => (
               <div key={a.name} className="bg-white/40 dark:bg-transparent p-6 flex flex-col">
@@ -253,32 +243,6 @@ export default function DesignHub() {
                 <span className="text-xs font-mono font-semibold text-stone-400 dark:text-stone-600 mb-2 block">{a.class}</span>
                 <p className="text-sm font-medium text-stone-900 dark:text-stone-100 mb-1">{a.name}</p>
                 <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">{a.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Prototypes */}
-        <section className="border-t border-stone-200 dark:border-stone-800 pt-12">
-          <h2 className="text-xs uppercase tracking-widest text-stone-400 dark:text-stone-600 mb-6">Prototypes</h2>
-          <div className="divide-y divide-stone-200 dark:divide-stone-800">
-            {prototypes.map((p) => (
-              <div key={p.title} className="py-6 flex items-start justify-between gap-4">
-                <div>
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base font-medium text-stone-900 dark:text-stone-100 hover:underline underline-offset-4"
-                  >
-                    {p.title}
-                  </a>
-                  <p className="text-sm text-stone-500 dark:text-stone-400 mt-1">{p.description}</p>
-                </div>
-                <div className="text-right shrink-0">
-                  <span className="text-xs text-stone-400 dark:text-stone-600 block">{p.date}</span>
-                  <span className="text-xs font-medium text-stone-500 dark:text-stone-400 mt-1 block">{p.status}</span>
-                </div>
               </div>
             ))}
           </div>
