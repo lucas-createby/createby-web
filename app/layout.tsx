@@ -64,7 +64,7 @@ export default function RootLayout({
             → CSS keeps content fully visible (fallback by default). */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{document.documentElement.classList.add('js');var t=localStorage.getItem('theme');var d=t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})()`,
+            __html: `(function(){try{document.documentElement.classList.add('js');var t=localStorage.getItem('theme');var d=t!=='light';if(d)document.documentElement.classList.add('dark');}catch(e){document.documentElement.classList.add('dark');}})()`,
           }}
         />
       </head>

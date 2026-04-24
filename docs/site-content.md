@@ -100,7 +100,7 @@ I am a designer, product developer and strategist. I work in the intersection of
 
 Currently Product and Innovation Director at Manyone, where I lead product and innovation work embedded in cross-functional client teams. Alongside that, I run create by™ for select consulting engagements.
 
-My background is in design — a BA from Central Saint Martins, a Master in Interaction and Service Design from the Oslo School of Architecture and Design, and an Executive Master in Innovation from BI Norwegian Business School. That combination shapes how I work: I think in systems, design in iterations, and measure what matters.
+My background is in design — a BA from Central Saint Martins, a Master in Interaction and Service Design from the Oslo School of Architecture and Design, and executive education in innovation at BI Norwegian Business School. That combination shapes how I work: I think in systems, design in iterations, and measure what matters.
 
 Ten years building from the inside — in-house product and design roles at Schibsted and Telenor, scaling a team from 4 to 50+ people, shipping products, running intrapreneurship programmes. Ten years working across industries as a consultant — media, telco, public sector, packaging, food service and early-stage ventures.
 

@@ -76,12 +76,16 @@ export default function About() {
       <Nav />
 
       <main className="flex-1 px-8 pt-32 pb-20 max-w-3xl">
-        <p className="text-xs uppercase tracking-widest text-stone-400 mb-12 dark:text-stone-600">
+        <p className="text-xs uppercase tracking-widest text-[var(--accent)] font-medium mb-12">
           About
         </p>
 
         <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-10 leading-tight dark:text-stone-100">
-          My name is Lucas Cueni.
+          My name is{" "}
+          <span className="font-display italic font-normal tracking-[-0.02em] text-[var(--accent)]">
+            Lucas Cueni
+          </span>
+          .
         </h1>
 
         <div className="space-y-6 text-stone-500 text-base leading-relaxed dark:text-stone-400">
@@ -106,7 +110,7 @@ export default function About() {
             <strong className="text-stone-700 dark:text-stone-300">
               Oslo School of Architecture and Design
             </strong>
-            , and an Executive Master in Innovation from{" "}
+            , and executive education in innovation at{" "}
             <strong className="text-stone-700 dark:text-stone-300">
               BI Norwegian Business School
             </strong>
@@ -153,7 +157,7 @@ export default function About() {
           <div className="flex items-center gap-4">
             <a
               href="mailto:hello@createby.no"
-              className="inline-block bg-stone-900 text-white text-sm font-medium px-6 py-3 hover:bg-stone-700 transition-colors dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300"
+              className="inline-flex items-center gap-2 bg-[var(--accent)] text-white dark:text-stone-900 text-sm font-semibold px-6 py-3 hover:brightness-110 transition-[filter,transform] hover:-translate-y-px"
             >
               hello@createby.no
             </a>
