@@ -15,7 +15,7 @@ const Nav = () => (
       create by™
     </Link>
     <div className="flex items-center gap-6 text-sm text-stone-500 dark:text-stone-400">
-      <Link href="/about" className="text-stone-900 font-medium dark:text-stone-100">
+      <Link href="/about/" className="text-stone-900 font-medium dark:text-stone-100">
         About
       </Link>
       <a
@@ -36,11 +36,11 @@ const Footer = () => (
         <span> — Cueni AS, 932292793</span>
       </div>
       <div className="flex items-center gap-4">
-        <Link href="/about" className="hover:text-stone-700 transition-colors dark:hover:text-stone-300">
+        <Link href="/about/" className="hover:text-stone-700 transition-colors dark:hover:text-stone-300">
           About
         </Link>
         <Link
-          href="/terms-privacy"
+          href="/terms-privacy/"
           className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
         >
           Privacy &amp; Terms
@@ -61,7 +61,7 @@ const Footer = () => (
         >
           Twitter
         </a>
-        <Link href="/design-hub" className="hover:text-stone-700 transition-colors dark:hover:text-stone-300">
+        <Link href="/design-hub/" className="hover:text-stone-700 transition-colors dark:hover:text-stone-300">
           Design Hub
         </Link>
         <span>© {new Date().getFullYear()}</span>
