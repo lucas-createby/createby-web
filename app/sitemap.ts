@@ -5,8 +5,8 @@ export const dynamic = 'force-static'
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://www.createby.no'
   return [
-    { url: base, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
-    { url: `${base}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/terms-privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${base}/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
+    { url: `${base}/about/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/terms-privacy/`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
   ]
 }

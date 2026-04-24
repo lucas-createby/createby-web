@@ -128,7 +128,7 @@ export default function Home() {
           create by™
         </Link>
         <div className="flex items-center gap-6 text-sm text-stone-500 dark:text-stone-400">
-          <Link href="/about" className="hover:text-stone-900 transition-colors dark:hover:text-stone-100">
+          <Link href="/about/" className="hover:text-stone-900 transition-colors dark:hover:text-stone-100">
             About
           </Link>
           <a
@@ -333,13 +333,13 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <Link
-              href="/about"
+              href="/about/"
               className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
             >
               About
             </Link>
             <Link
-              href="/terms-privacy"
+              href="/terms-privacy/"
               className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
             >
               Privacy &amp; Terms
@@ -361,7 +361,7 @@ export default function Home() {
               Twitter
             </a>
             <Link
-              href="/design-hub"
+              href="/design-hub/"
               className="hover:text-stone-700 transition-colors dark:hover:text-stone-300"
             >
               Design Hub

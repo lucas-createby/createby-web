@@ -150,7 +150,7 @@ export default function DesignHub() {
           create by™
         </Link>
         <div className="flex items-center gap-6 text-sm text-stone-500 dark:text-stone-400">
-          <Link href="/about" className="hover:text-stone-900 transition-colors dark:hover:text-stone-100">About</Link>
+          <Link href="/about/" className="hover:text-stone-900 transition-colors dark:hover:text-stone-100">About</Link>
           <a href="mailto:hello@createby.no" className="hover:text-stone-900 transition-colors dark:hover:text-stone-100">Contact</a>
         </div>
       </nav>
