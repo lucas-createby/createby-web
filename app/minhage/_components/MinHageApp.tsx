@@ -5,16 +5,16 @@ import dynamic from "next/dynamic"
 import BudsjettTab from "./BudsjettTab"
 import KalenderTab from "./KalenderTab"
 import SaaingTab from "./SaaingTab"
-import TilbudTab from "./TilbudTab"
+import PlanterTab from "./PlanterTab"
 
 const MapTab = dynamic(() => import("./MapTab"), { ssr: false })
 
 const TABS = [
   { id: "kart", label: "Kart", emoji: "🗺️" },
+  { id: "planter", label: "Planter", emoji: "🌿" },
   { id: "budsjett", label: "Budsjett", emoji: "💰" },
   { id: "kalender", label: "Kalender", emoji: "📅" },
   { id: "saing", label: "Såing", emoji: "🌱" },
-  { id: "tilbud", label: "Tilbud", emoji: "🏷️" },
 ]
 
 type Props = { userEmail: string; userName: string }
@@ -63,10 +63,10 @@ export default function MinHageApp({ userEmail }: Props) {
       {/* Tab content */}
       <div style={{ background: "#fff", borderRadius: "0 0 12px 12px", minHeight: 600, padding: 20 }}>
         {activeTab === "kart" && <MapTab userEmail={userEmail} />}
+        {activeTab === "planter" && <PlanterTab />}
         {activeTab === "budsjett" && <BudsjettTab userEmail={userEmail} />}
         {activeTab === "kalender" && <KalenderTab />}
         {activeTab === "saing" && <SaaingTab />}
-        {activeTab === "tilbud" && <TilbudTab />}
       </div>
 
       {/* Mobile bottom tab bar */}

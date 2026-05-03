@@ -7,10 +7,10 @@ export async function GET() {
   if (!session?.user?.email) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
   const { data, error } = await hageAdmin()
-    .from("garden_areas")
+    .from("garden_plants")
     .select("*")
     .eq("user_email", session.user.email)
-    .order("created_at", { ascending: true })
+    .order("created_at", { ascending: false })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   return NextResponse.json(data)
@@ -20,11 +20,23 @@ export async function POST(req: Request) {
   const session = await auth()
   if (!session?.user?.email) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
-  const { name, zone_type, color, geojson } = await req.json()
+  const body = await req.json()
 
   const { data, error } = await hageAdmin()
-    .from("garden_areas")
-    .insert({ user_email: session.user.email, name: name ?? "", zone_type: zone_type ?? "Annet", color: color ?? "#2d6a26", geojson })
+    .from("garden_plants")
+    .insert({
+      user_email: session.user.email,
+      name: body.name,
+      store: body.store ?? "",
+      price: body.price ?? "",
+      url: body.url ?? "",
+      image_url: body.image_url ?? "",
+      description: body.description ?? "",
+      zone_id: body.zone_id ?? null,
+      kategori: body.kategori ?? "Annet",
+      bloom_start: body.bloom_start ?? null,
+      bloom_end: body.bloom_end ?? null,
+    })
     .select()
     .single()
 
@@ -40,15 +52,13 @@ export async function PUT(req: Request) {
   const id = searchParams.get("id")
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 })
 
-  const { name, zone_type, color, geojson } = await req.json()
+  const body = await req.json()
   const updates: Record<string, unknown> = {}
-  if (geojson !== undefined) updates.geojson = geojson
-  if (name !== undefined) updates.name = name
-  if (color !== undefined) updates.color = color
-  if (zone_type !== undefined) updates.zone_type = zone_type
+  const fields = ["name", "store", "price", "url", "image_url", "description", "zone_id", "kategori", "bloom_start", "bloom_end"]
+  fields.forEach((f) => { if (body[f] !== undefined) updates[f] = body[f] })
 
   const { data, error } = await hageAdmin()
-    .from("garden_areas")
+    .from("garden_plants")
     .update(updates)
     .eq("id", id)
     .eq("user_email", session.user.email)
@@ -68,7 +78,7 @@ export async function DELETE(req: Request) {
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 })
 
   const { error } = await hageAdmin()
-    .from("garden_areas")
+    .from("garden_plants")
     .delete()
     .eq("id", id)
     .eq("user_email", session.user.email)
