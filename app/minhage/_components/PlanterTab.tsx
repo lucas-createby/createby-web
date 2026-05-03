@@ -93,7 +93,27 @@ const EMPTY_FORM: AddForm = {
   description: "", zone_id: "", kategori: "Stauder", bloom_start: "", bloom_end: "",
 }
 
-const KATEGORIER = ["Stauder", "Busker", "Grønnsaker", "Frukt", "Urter", "Blomster", "Annet"]
+function guessKategori(name: string): string {
+  const n = name.toLowerCase()
+  if (n.includes("hage") && (n.includes("slange") || n.includes("vann"))) return "Hageutstyr"
+  if (n.includes("gjødsel") || n.includes("jord") || n.includes("torv") || n.includes("kompost")) return "Gjødsel/jord"
+  if (n.includes("spade") || n.includes("harv") || n.includes("rake") || n.includes("saks") || n.includes("kniv")) return "Verktøy"
+  if (n.includes("drivhus") || n.includes("plantekasse") || n.includes("bed") || n.includes("gjerde")) return "Drivhus/bygg"
+  if (n.includes("slange") || n.includes("vanning") || n.includes("spreder")) return "Hageutstyr"
+  if (n.includes("frø") || n.includes("såfrø")) return "Frø"
+  return "Stauder" // default to plant
+}
+
+// Categories that have bloom time (plants)
+const PLANTE_KAT = new Set(["Stauder", "Busker", "Grønnsaker", "Frukt", "Urter", "Blomster", "Frø"])
+
+const KATEGORIER = [
+  // Planter
+  { group: "Planter", items: ["Stauder", "Busker", "Grønnsaker", "Frukt", "Urter", "Blomster", "Frø"] },
+  // Utstyr
+  { group: "Utstyr", items: ["Verktøy", "Materialer", "Hageutstyr", "Gjødsel/jord", "Drivhus/bygg", "Annet"] },
+]
+const ALLE_KAT = KATEGORIER.flatMap(g => g.items)
 
 // ─── Bloom bar ─────────────────────────────────────────────────────────────
 
@@ -159,14 +179,16 @@ export default function PlanterTab() {
       setScraping(false)
       return
     }
+    const scrapedName = data.name ?? ""
     setAddForm({
       ...EMPTY_FORM,
-      name: data.name ?? "",
+      name: scrapedName,
       store: data.store ?? "",
       price: data.price ?? "",
       url: urlInput.trim(),
       image_url: data.image ?? "",
       description: data.description ?? "",
+      kategori: guessKategori(scrapedName),
     })
     setScraping(false)
     setShowAddForm(true)
@@ -285,29 +307,35 @@ export default function PlanterTab() {
                   rows={2} style={{ ...inputStyle, gridColumn: "1 / -1", resize: "vertical" }} />
 
                 <select value={addForm.kategori} onChange={e => setAddForm({ ...addForm, kategori: e.target.value })} style={inputStyle}>
-                  {KATEGORIER.map(k => <option key={k}>{k}</option>)}
+                  {KATEGORIER.map(g => (
+                    <optgroup key={g.group} label={g.group}>
+                      {g.items.map(k => <option key={k}>{k}</option>)}
+                    </optgroup>
+                  ))}
                 </select>
                 <select value={addForm.zone_id} onChange={e => setAddForm({ ...addForm, zone_id: e.target.value })} style={inputStyle}>
                   <option value="">Ingen sone</option>
                   {areas.map(a => <option key={a.id} value={a.id}>{a.name || "Sone uten navn"}</option>)}
                 </select>
 
-                <div style={{ gridColumn: "1 / -1" }}>
-                  <p style={{ margin: "0 0 4px", fontSize: 12, color: "#6b7280" }}>Blomstringstid (månedsnummer, 1–12)</p>
-                  <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                    <input type="number" min={1} max={12} placeholder="Fra" value={addForm.bloom_start}
-                      onChange={e => setAddForm({ ...addForm, bloom_start: e.target.value })}
-                      style={{ ...inputStyle, width: 70 }} />
-                    <span style={{ color: "#9ca3af" }}>→</span>
-                    <input type="number" min={1} max={12} placeholder="Til" value={addForm.bloom_end}
-                      onChange={e => setAddForm({ ...addForm, bloom_end: e.target.value })}
-                      style={{ ...inputStyle, width: 70 }} />
-                    <BloomBar
-                      start={addForm.bloom_start ? Number(addForm.bloom_start) : null}
-                      end={addForm.bloom_end ? Number(addForm.bloom_end) : null}
-                    />
+                {PLANTE_KAT.has(addForm.kategori) && (
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <p style={{ margin: "0 0 4px", fontSize: 12, color: "#6b7280" }}>Blomstringstid (månedsnummer 1–12, valgfri)</p>
+                    <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                      <input type="number" min={1} max={12} placeholder="Fra" value={addForm.bloom_start}
+                        onChange={e => setAddForm({ ...addForm, bloom_start: e.target.value })}
+                        style={{ ...inputStyle, width: 70 }} />
+                      <span style={{ color: "#9ca3af" }}>→</span>
+                      <input type="number" min={1} max={12} placeholder="Til" value={addForm.bloom_end}
+                        onChange={e => setAddForm({ ...addForm, bloom_end: e.target.value })}
+                        style={{ ...inputStyle, width: 70 }} />
+                      <BloomBar
+                        start={addForm.bloom_start ? Number(addForm.bloom_start) : null}
+                        end={addForm.bloom_end ? Number(addForm.bloom_end) : null}
+                      />
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
