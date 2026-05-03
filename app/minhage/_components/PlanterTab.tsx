@@ -1,6 +1,21 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+
+// ─── Store links ────────────────────────────────────────────────────────────
+
+const STORE_LINKS = [
+  { name: "Plantasjen", url: "https://www.plantasjen.no", color: "#1b7a3e" },
+  { name: "Hageland", url: "https://www.hageland.no", color: "#e8590c" },
+  { name: "Mester Grønn", url: "https://www.mestergronn.no", color: "#2d6a26" },
+  { name: "Blomsterringen", url: "https://www.blomsterringen.no", color: "#c0392b" },
+  { name: "Byggmax", url: "https://www.byggmax.no", color: "#e74c3c" },
+  { name: "Jernia", url: "https://www.jernia.no", color: "#2980b9" },
+  { name: "Biltema", url: "https://www.biltema.no", color: "#e67e22" },
+  { name: "K-Rauta", url: "https://www.k-rauta.no", color: "#27ae60" },
+  { name: "Maxbo", url: "https://www.maxbo.no", color: "#8e44ad" },
+  { name: "Coop", url: "https://www.coop.no", color: "#e74c3c" },
+]
 
 // ─── Built-in plant database ───────────────────────────────────────────────
 
@@ -115,6 +130,235 @@ const KATEGORIER = [
 ]
 const ALLE_KAT = KATEGORIER.flatMap(g => g.items)
 
+// ─── StoreBrowser overlay ──────────────────────────────────────────────────
+
+type ScrapedProduct = {
+  name: string; store: string; price: string; image: string; description: string
+}
+
+function StoreBrowser({
+  onAdd,
+  onClose,
+}: {
+  onAdd: (product: ScrapedProduct & { url: string }) => void
+  onClose: () => void
+}) {
+  const [url, setUrl] = useState("")
+  const [scraping, setScraping] = useState(false)
+  const [scrapeError, setScrapeError] = useState("")
+  const [scraped, setScraped] = useState<(ScrapedProduct & { url: string }) | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    setTimeout(() => inputRef.current?.focus(), 50)
+  }, [])
+
+  async function doScrape(rawUrl: string) {
+    const trimmed = rawUrl.trim()
+    if (!trimmed.startsWith("http")) return
+    setScraping(true)
+    setScrapeError("")
+    setScraped(null)
+    try {
+      const res = await fetch("/api/minhage/scrape-plant", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ url: trimmed }),
+      })
+      const data = await res.json()
+      if (!res.ok) { setScrapeError(data.error ?? "Feil ved henting"); return }
+      setScraped({ name: data.name ?? "", store: data.store ?? "", price: data.price ?? "",
+        image: data.image ?? "", description: data.description ?? "", url: trimmed })
+    } finally {
+      setScraping(false)
+    }
+  }
+
+  function handlePaste(e: React.ClipboardEvent<HTMLInputElement>) {
+    const pasted = e.clipboardData.getData("text").trim()
+    if (pasted.startsWith("http")) {
+      setUrl(pasted)
+      // Let React update state first, then scrape
+      setTimeout(() => doScrape(pasted), 30)
+    }
+  }
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        onClick={onClose}
+        style={{
+          position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)",
+          zIndex: 1000, backdropFilter: "blur(2px)",
+        }}
+      />
+
+      {/* Panel */}
+      <div style={{
+        position: "fixed", bottom: 0, left: 0, right: 0,
+        zIndex: 1001,
+        background: "#fff",
+        borderRadius: "20px 20px 0 0",
+        boxShadow: "0 -4px 32px rgba(0,0,0,0.18)",
+        maxHeight: "90dvh",
+        overflowY: "auto",
+        padding: "0 0 env(safe-area-inset-bottom)",
+      }}>
+        {/* Handle */}
+        <div style={{ display: "flex", justifyContent: "center", paddingTop: 10 }}>
+          <div style={{ width: 40, height: 4, borderRadius: 2, background: "#e0e8dc" }} />
+        </div>
+
+        {/* Header */}
+        <div style={{
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          padding: "12px 20px 0",
+        }}>
+          <h3 style={{ margin: 0, fontSize: 17, color: "#1a3a1a", fontWeight: 700 }}>Finn produkt</h3>
+          <button
+            onClick={onClose}
+            style={{
+              background: "#f4f7f3", border: "none", borderRadius: "50%",
+              width: 32, height: 32, fontSize: 18, cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "#6b7280", fontWeight: 700,
+            }}
+          >×</button>
+        </div>
+
+        <div style={{ padding: "16px 20px 28px" }}>
+          {/* Store shortcuts */}
+          <p style={{ margin: "0 0 10px", fontSize: 12, color: "#9ca3af", fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
+            Åpne butikk
+          </p>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
+            {STORE_LINKS.map(s => (
+              <a
+                key={s.name}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 5,
+                  padding: "7px 12px", borderRadius: 20,
+                  background: s.color + "12",
+                  border: `1.5px solid ${s.color}30`,
+                  color: s.color, fontSize: 13, fontWeight: 600,
+                  textDecoration: "none", whiteSpace: "nowrap",
+                }}
+              >
+                {s.name} ↗
+              </a>
+            ))}
+          </div>
+
+          {/* URL paste input */}
+          <p style={{ margin: "0 0 8px", fontSize: 12, color: "#9ca3af", fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
+            Lim inn produktlenke
+          </p>
+          <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+            <input
+              ref={inputRef}
+              type="url"
+              placeholder="https://www.plantasjen.no/..."
+              value={url}
+              onChange={e => setUrl(e.target.value)}
+              onPaste={handlePaste}
+              onKeyDown={e => e.key === "Enter" && doScrape(url)}
+              style={{ ...inputStyle, flex: 1 }}
+            />
+            <button
+              onClick={() => doScrape(url)}
+              disabled={scraping || !url.trim()}
+              style={{ ...btnStyle, padding: "8px 14px", opacity: scraping || !url.trim() ? 0.5 : 1 }}
+            >
+              {scraping ? "..." : "Hent"}
+            </button>
+          </div>
+          {scrapeError && (
+            <p style={{ color: "#dc2626", fontSize: 13, margin: "4px 0 0" }}>{scrapeError}</p>
+          )}
+
+          {/* Scraping indicator */}
+          {scraping && (
+            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 0", color: "#6b7280", fontSize: 13 }}>
+              <div style={{
+                width: 16, height: 16, border: "2px solid #e0e8dc", borderTopColor: "#2d6a26",
+                borderRadius: "50%", animation: "spin 0.7s linear infinite", flexShrink: 0,
+              }} />
+              Henter produktinfo...
+            </div>
+          )}
+
+          {/* Scraped product preview */}
+          {scraped && !scraping && (
+            <div style={{
+              marginTop: 16, border: "1.5px solid #c8ddc5", borderRadius: 14,
+              background: "#f8fdf7", overflow: "hidden",
+            }}>
+              {scraped.image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={scraped.image} alt={scraped.name} referrerPolicy="no-referrer"
+                  style={{ width: "100%", height: 180, objectFit: "contain", background: "#fff", padding: 8 }}
+                  onError={e => { (e.target as HTMLImageElement).style.display = "none" }}
+                />
+              )}
+              <div style={{ padding: "12px 16px" }}>
+                {scraped.store && (
+                  <span style={{ fontSize: 11, color: "#6b7280", background: "#e8f5e8", borderRadius: 8, padding: "2px 7px" }}>
+                    {scraped.store}
+                  </span>
+                )}
+                <div style={{ fontWeight: 700, fontSize: 16, color: "#1a3a1a", margin: "6px 0 2px" }}>
+                  {scraped.name || "(ukjent navn)"}
+                </div>
+                {scraped.price && (
+                  <div style={{ fontSize: 15, fontWeight: 700, color: "#2d6a26", marginBottom: 4 }}>
+                    {scraped.price} kr
+                  </div>
+                )}
+                {scraped.description && (
+                  <p style={{
+                    fontSize: 13, color: "#6b7280", margin: "4px 0 0",
+                    display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden",
+                  }}>
+                    {scraped.description}
+                  </p>
+                )}
+              </div>
+              <div style={{ padding: "0 16px 16px" }}>
+                <button
+                  onClick={() => { onAdd(scraped); onClose() }}
+                  style={{ ...btnStyle, width: "100%", fontSize: 15, padding: "11px 18px" }}
+                >
+                  + Legg til hagen
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Hint when no URL yet */}
+          {!scraped && !scraping && !url && (
+            <div style={{
+              marginTop: 12, padding: "16px", background: "#f4f7f3", borderRadius: 10,
+              fontSize: 13, color: "#6b7280", lineHeight: 1.5,
+            }}>
+              1. Åpne en butikk ovenfor<br />
+              2. Finn produktet du vil ha<br />
+              3. Kopier URL-en fra adressefeltet<br />
+              4. Lim inn her — produktinfo hentes automatisk
+            </div>
+          )}
+        </div>
+      </div>
+
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </>
+  )
+}
+
 // ─── Bloom bar ─────────────────────────────────────────────────────────────
 
 function BloomBar({ start, end, small }: { start: number | null; end: number | null; small?: boolean }) {
@@ -150,47 +394,29 @@ export default function PlanterTab() {
   const [view, setView] = useState<"plan" | "database">("plan")
   const [plants, setPlants] = useState<GardenPlant[]>([])
   const [areas, setAreas] = useState<GardenArea[]>([])
-  const [urlInput, setUrlInput] = useState("")
-  const [scraping, setScraping] = useState(false)
-  const [scrapeError, setScrapeError] = useState("")
   const [addForm, setAddForm] = useState<AddForm | null>(null)
   const [saving, setSaving] = useState(false)
   const [dbFilter, setDbFilter] = useState<"alle" | "stauder" | "busker">("alle")
   const [dbMonthFilter, setDbMonthFilter] = useState<number | null>(null)
   const [showAddForm, setShowAddForm] = useState(false)
+  const [showBrowser, setShowBrowser] = useState(false)
 
   useEffect(() => {
     fetch("/api/minhage/plants").then(r => r.json()).then(d => { if (Array.isArray(d)) setPlants(d) })
     fetch("/api/minhage/areas").then(r => r.json()).then(d => { if (Array.isArray(d)) setAreas(d) })
   }, [])
 
-  async function handleScrape() {
-    if (!urlInput.trim()) return
-    setScraping(true)
-    setScrapeError("")
-    const res = await fetch("/api/minhage/scrape-plant", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ url: urlInput.trim() }),
-    })
-    const data = await res.json()
-    if (!res.ok) {
-      setScrapeError(data.error ?? "Feil ved henting")
-      setScraping(false)
-      return
-    }
-    const scrapedName = data.name ?? ""
+  function handleBrowserAdd(product: ScrapedProduct & { url: string }) {
     setAddForm({
       ...EMPTY_FORM,
-      name: scrapedName,
-      store: data.store ?? "",
-      price: data.price ?? "",
-      url: urlInput.trim(),
-      image_url: data.image ?? "",
-      description: data.description ?? "",
-      kategori: guessKategori(scrapedName),
+      name: product.name,
+      store: product.store,
+      price: product.price,
+      url: product.url,
+      image_url: product.image,
+      description: product.description,
+      kategori: guessKategori(product.name),
     })
-    setScraping(false)
     setShowAddForm(true)
   }
 
@@ -211,7 +437,6 @@ export default function PlanterTab() {
     if (newPlant.id) setPlants(prev => [newPlant, ...prev])
     setAddForm(null)
     setShowAddForm(false)
-    setUrlInput("")
     setSaving(false)
   }
 
@@ -250,29 +475,29 @@ export default function PlanterTab() {
       {/* ── MIN PLAN ── */}
       {view === "plan" && (
         <div>
-          {/* URL input */}
-          <div style={{ background: "#f4f7f3", border: "1px solid #c8ddc5", borderRadius: 10, padding: 16, marginBottom: 20 }}>
-            <p style={{ margin: "0 0 8px", fontWeight: 600, fontSize: 14, color: "#1a3a1a" }}>
-              Legg til fra nettbutikk
-            </p>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              <input
-                placeholder="Lim inn produktlenke fra Plantasjen, Hageland, ..."
-                value={urlInput}
-                onChange={e => setUrlInput(e.target.value)}
-                onKeyDown={e => e.key === "Enter" && handleScrape()}
-                style={{ ...inputStyle, flex: 1, minWidth: 200 }}
-              />
-              <button onClick={handleScrape} disabled={scraping || !urlInput.trim()} style={btnStyle}>
-                {scraping ? "Henter..." : "Hent info"}
-              </button>
-              <button onClick={() => { setAddForm({ ...EMPTY_FORM }); setShowAddForm(true) }}
-                style={{ ...btnStyle, background: "transparent", color: "#2d6a26", border: "1px solid #2d6a26" }}>
-                + Manuelt
-              </button>
-            </div>
-            {scrapeError && <p style={{ color: "#dc2626", fontSize: 13, marginTop: 6 }}>{scrapeError}</p>}
+          {/* Add actions */}
+          <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
+            <button
+              onClick={() => setShowBrowser(true)}
+              style={{ ...btnStyle, display: "flex", alignItems: "center", gap: 7, fontSize: 14 }}
+            >
+              <span style={{ fontSize: 16 }}>🛍️</span> Finn i butikk
+            </button>
+            <button
+              onClick={() => { setAddForm({ ...EMPTY_FORM }); setShowAddForm(true) }}
+              style={{ ...btnStyle, background: "transparent", color: "#2d6a26", border: "1.5px solid #2d6a26" }}
+            >
+              + Legg til manuelt
+            </button>
           </div>
+
+          {/* In-app browser overlay */}
+          {showBrowser && (
+            <StoreBrowser
+              onAdd={handleBrowserAdd}
+              onClose={() => setShowBrowser(false)}
+            />
+          )}
 
           {/* Add/edit form */}
           {showAddForm && addForm && (
@@ -349,10 +574,13 @@ export default function PlanterTab() {
           {/* Plant grid */}
           {plants.length === 0 && !showAddForm ? (
             <div style={{ textAlign: "center", padding: 48, color: "#9ca3af" }}>
-              <div style={{ fontSize: 40, marginBottom: 8 }}>🌿</div>
-              <p style={{ margin: 0, fontSize: 14 }}>
-                Lim inn en lenke fra Plantasjen eller Hageland for å komme i gang.
+              <div style={{ fontSize: 40, marginBottom: 8 }}>🛍️</div>
+              <p style={{ margin: "0 0 14px", fontSize: 14 }}>
+                Trykk «Finn i butikk» for å bla i Plantasjen, Hageland og mer — og legg til direkte i hagen din.
               </p>
+              <button onClick={() => setShowBrowser(true)} style={{ ...btnStyle, fontSize: 14 }}>
+                Finn i butikk →
+              </button>
             </div>
           ) : (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 14 }}>
